@@ -1,0 +1,151 @@
+.VA {
+    #mediumRect {
+        transform: translate(-490px, 0) rotate(15deg);
+        opacity: 0;
+        transition: 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    #darkRect {
+        transform: translate(-310px, 0) rotate(15deg);
+        opacity: 0;
+        transition: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+}
+.VA:hover {
+    #mediumRect {
+        transform: translate(0px, 0) rotate(15deg);
+        opacity: 1;
+    }
+    #darkRect {
+        transform: translate(0px, 0) rotate(15deg);
+        opacity: 1;
+    }
+}
+
+.CS {
+    #rectOne,
+    #rectTwo,
+    #rectThree,
+    #rectFour,
+    #rectFive {
+        transform: translate(0, -206px);
+        opacity: 0;
+    }
+    #rectOne {
+        transition: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    #rectTwo {
+        transition: 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    #rectThree {
+        transition: 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    #rectFour {
+        transition: 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    #rectFive {
+        transition: 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+}
+.CS:hover {
+    #rectOne,
+    #rectTwo,
+    #rectThree,
+    #rectFour,
+    #rectFive {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+.ST {
+    #circOne {
+        transform: translate(0, 450px);
+        opacity: 0;
+        transition: 0.4s cubic-bezier(0.1, 0.1, 0.8, 1);
+    }
+    #circTwo {
+        transform: translate(0, 450px);
+        opacity: 0;
+        transition: 0.3s cubic-bezier(0.1, 0.1, 0.8, 1);
+    }
+    #circThree {
+        transform: translate(0, 450px);
+        opacity: 0;
+        transition: 0.2s cubic-bezier(0.1, 0.1, 0.8, 1);
+    }
+}
+.ST:hover {
+    #circOne,
+    #circTwo,
+    #circThree {
+        transform: translate(0, 190px);
+        opacity: 1;
+    }
+}
+
+.BB {
+    #rectLight {
+        transform: translate(-380px, 0);
+        opacity: 0;
+        transition: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    #rectMedium {
+        transform: translate(-560px, 0);
+        opacity: 0;
+        transition: 0.325s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    #rectDark {
+        transform: translate(220px, -360px);
+        // opacity: 0;
+        transition: 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+}
+.BB:hover {
+    #rectLight,
+    #rectDark,
+    #rectMedium {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+.DT {
+    #note1,
+    #note2,
+    #note3,
+    #note4,
+    #note5,
+    #note6 {
+        transform: translate(0, -206px);
+        opacity: 0;
+    }
+    #note1 {
+        transition: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    #note2 {
+        transition: 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    #note3 {
+        transition: 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    #note4 {
+        transition: 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    #note5 {
+        transition: 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    #note6 {
+        transition: 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+}
+.DT:hover {
+    #note1,
+    #note2,
+    #note3,
+    #note4,
+    #note5,
+    #note6 {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}

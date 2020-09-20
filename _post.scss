@@ -1,0 +1,142 @@
+$extra-light: 200;
+
+.content-module {
+    margin-bottom: 3 * 30px;
+    margin-top: 4 * 30px;
+    .sub-module-text {
+        display: grid;
+        grid-gap: 30px;
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+        width: 100%;
+        margin-top: 60px;
+        .title {
+            font-size: 18px;
+            line-height: 30px;
+            font-weight: 300;
+        }
+        .content {
+            font-weight: 600;
+            font-size: 30px;
+            line-height: 45px;
+        }
+    }
+    .sub-module-text.hit{
+        grid-gap: 15px;
+        grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+        background-color: #fad47d3a; padding: 30px 0px 30px 30px;
+        .ct{
+            text-align: center;
+        }
+    }
+    .title {
+        font-size: 18px;
+        line-height: 30px;
+        font-weight: 300;
+    }
+    img {
+        width: 100%;
+        // border: solid 30px #99c0ff7e;
+        -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
+    }
+    video, iframe{
+        width: 100%;
+    }
+    .button {
+        display: grid;
+        place-items: center;
+        button {
+            width: 11 * 30px;
+            height: 2 * 30px;
+            font-size: 18px;
+
+            background-color: white;
+            border: solid 1px #809bc5;
+            transition: 0.2s ease-in-out;
+        }
+        button:hover {
+            background-color: #809bc5;
+            color: white;
+        }
+    }
+}
+.content-module.illus{
+    width: 100%;
+    img{
+        box-shadow: none; 
+    }
+}
+.csone{
+    display: block;
+}
+.cstwo{
+    display: none;
+}
+.proto{
+    display: grid;
+    place-items: center;
+}
+
+@media only screen and (max-width: 700px) {
+    .post-title{
+        font-size: 25px;
+    }
+    .content-module {
+        font-size: 20px;
+        line-height: 35px;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 30px;
+        margin-top: 1 * 30px;
+        .title{
+            font-size: 15px;
+
+        }
+        .sub-module-text{
+            .title{
+                font-size: 15px;
+            }
+            .content{
+                font-size: 20px;
+                line-height: 35px;
+            }
+            .content.ct{
+                text-align: left;
+            }
+        }
+        .sub-module-text.hit{
+            padding: 5px;
+        }
+    }
+    #UXL {
+        img {
+            content: url("./Assets/OK-LOGO-FIN.svg");
+        }
+    }
+    .button {
+        margin-top: 30px;
+        display: flex;
+        margin-bottom: 2 * 30px;
+    }
+    #line {
+        display: none;
+    }
+    img {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    #screen {
+        content: url("./Assets/image/VA-banner-mob.png");
+    }
+    .content-module.illus{
+        width: 90%;
+    }
+}
+@media only screen and (max-width: 1078px){
+    .csone{
+        display: none;
+    }
+    .cstwo{
+        display: block;
+    }
+}
