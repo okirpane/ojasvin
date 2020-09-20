@@ -400,6 +400,7 @@ body::-webkit-scrollbar {
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
 }
 .parent main .sect img, .parent main .sect svg {
+  width: 100%;
   transition: 0.2s ease-in-out;
 }
 .parent main .sect img:hover, .parent main .sect svg:hover {
