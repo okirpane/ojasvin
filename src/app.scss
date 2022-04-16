@@ -1,0 +1,82 @@
+/* Write your global styles here, in SCSS syntax. Variables and mixins from the src/variables.scss file are available here without importing */
+// @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap");
+@import "variables";
+
+@font-face {
+    font-family: 'Plex';
+    font-weight: 300;
+    font-display: swap;
+    src: url('/plexLight.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Plex';
+    font-weight: 400;
+    font-display: swap;
+    src: url('/plexRegular.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Plex';
+    font-weight: 700;
+    font-display: swap;
+    src: url('/plexBold.woff2') format('woff2');
+}
+
+html {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+body {
+    position: relative;
+    max-width: 100%;
+}
+body {
+    background: #BFD8FF;
+    filter: saturate(1.25);
+    margin: 0%;
+    box-sizing: border-box;
+    max-height: 100vh;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: get-vw(30px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+    text-align: left;
+    color: rgba(25, 25, 25, 0.85);
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    max-width: 1245px;
+    @media screen and (min-width: 1300px) {
+        // margin: (2 * $unit) auto;
+        font-size: min(get-vw(30px), 30px);
+    }
+    @media screen and (max-width: $bp) {
+        font-size: max(get-vw(30px), 30px);
+    }
+
+    a {
+        font-weight: 700;
+        color: #99c0ff;
+        text-decoration: none;
+    }
+    a:hover {
+        transition: color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+        color: #66a0ff;
+    }
+    b {
+        font-weight: 700;
+    }
+    .grow {
+        scale: 1;
+        transition: scale 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+    .grow:hover {
+        scale: 1.025;
+        transition: scale 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+    .saturate {
+        filter: saturate(1.60);
+    }
+}
