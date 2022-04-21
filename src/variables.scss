@@ -6,6 +6,7 @@ $viewport: get-vw(5px);
 $bp: 810px;
 
 $max-breakpoint: 1440;
+$max-breakpoint-vh: 684;
 
 // This could be one of your media query breakpoint variables
 $wide-screen: "(min-width: #{$max-breakpoint}px)"; 
@@ -22,4 +23,9 @@ $wide-screen: "(min-width: #{$max-breakpoint}px)";
   @media #{$wide-screen} {
     font-size: $size;
   }
+}
+
+@function get-vh($target) {
+  $vh-context: ($max-breakpoint-vh * .01) * 1px; // 1% viewport width
+  @return calc($target/$vh-context) * 1vh;
 }

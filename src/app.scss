@@ -6,19 +6,19 @@
     font-family: 'Plex';
     font-weight: 300;
     font-display: swap;
-    src: url('/plexLight.woff2') format('woff2');
+    src: url('/fonts/plexLight.woff2') format('woff2');
 }
 @font-face {
     font-family: 'Plex';
     font-weight: 400;
     font-display: swap;
-    src: url('/plexRegular.woff2') format('woff2');
+    src: url('/fonts/plexRegular.woff2') format('woff2');
 }
 @font-face {
     font-family: 'Plex';
     font-weight: 700;
     font-display: swap;
-    src: url('/plexBold.woff2') format('woff2');
+    src: url('/fonts/plexBold.woff2') format('woff2');
 }
 
 html {
@@ -30,12 +30,16 @@ body {
     max-width: 100%;
 }
 body {
+    min-width: 100vw;
+    min-height: 100vh;
+    
     background: #BFD8FF;
     filter: saturate(1.25);
     margin: 0%;
     box-sizing: border-box;
     max-height: 100vh;
-    font-family: "IBM Plex Mono", monospace;
+
+    font-family: "Plex", monospace;
     font-size: get-vw(30px);
     font-style: normal;
     font-weight: 400;
@@ -56,27 +60,42 @@ body {
         font-size: max(get-vw(30px), 30px);
     }
 
-    a {
+    a.inline {
         font-weight: 700;
         color: #99c0ff;
         text-decoration: none;
+        transition: color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
     }
-    a:hover {
+    a.inline:hover {
         transition: color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
         color: #66a0ff;
     }
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
     b {
         font-weight: 700;
     }
+
     .grow {
-        scale: 1;
-        transition: scale 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+        transform: scale(1);
+        // scale: 1;
+        transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
     }
     .grow:hover {
-        scale: 1.025;
-        transition: scale 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+        transform: scale(1.1);
+        transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
     }
     .saturate {
-        filter: saturate(1.60);
+        
+    }
+    .link {
+        cursor: pointer;
+    }
+
+    .sticker-shadow {
+            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1), 0px 4px 6px rgba(0, 0, 0, 0.05);
     }
 }
