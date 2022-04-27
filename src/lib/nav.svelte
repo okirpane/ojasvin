@@ -1,4 +1,6 @@
 <script lang="ts">
+import { goto } from '$app/navigation';
+
 	import { aboutSwitch } from '$lib/aboutSwitch';
 	import { workSwitch } from '$lib/workSwitch';
 
@@ -12,6 +14,7 @@
 			<div
 				id="work"
 				on:click={() => {
+					goto('/');
 					aboutSwitch.turnOff();
 					workSwitch.toggle();
 				}}
@@ -42,10 +45,11 @@
 <style lang="scss">
 	@import './src/variables.scss';
 	main {
-		z-index: 4;
 		position: sticky;
 
-		width: 100vw;
+		z-index: 4;
+
+		pointer-events: none;
 
 		display: grid;
 		justify-items: center;
@@ -129,8 +133,11 @@
 		}
 
 		#nav-container {
+
 			width: get-vw(220px);
 			height: get-vw(60px);
+
+			pointer-events: all;
 
 			border-radius: get-vw(30px);
 			background: #f7faff;

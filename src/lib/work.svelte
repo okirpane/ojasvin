@@ -67,7 +67,7 @@
 			out:fade={{ duration: 150 }}
 			class="sizing fixed absolute"
 		>
-			<a sveltekit:prefetch href={`/${posts[4].path.replace('.md', '')}`}>
+			<a sveltekit:prefetch target="_blank" href="http://sketches2020.compform.net/users/fY4guEMRJi3SpJHrM">
 				<img
 					class="p-five saturate"
 					src={`${posts[4].metadata.thumbnail}`}
@@ -121,6 +121,18 @@
 
 				transform: rotate(-15deg);
 				transition: transform 0.15s cubic-bezier(0.075, 0.82, 0.165, 1);
+				@media screen and (max-width: 1100px) {
+					left: 25%;
+				}
+				@media screen and (max-width: 915px) {
+					left: min(5%, get-vw(375px));
+				}
+				@media (max-height: 400px) and (max-width: 915px) {
+					left: get-vw(375px);
+				}
+				// @media screen and (max-width: 915px) {
+				// 	left: min(5%, get-vw(375px));
+				// }
 			}
 			.p-two {
 				top: get-vh(190px);
@@ -130,6 +142,16 @@
 
 				transform: rotate(15deg);
 				transition: transform 0.15s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+				@media screen and (max-width: 1100px) {
+					right: 25%;
+				}
+				@media screen and (max-width: 915px) {
+					right: 5%;
+				}
+				@media (max-height: 400px) and (max-width: 915px) {
+					right: get-vw(325px);
+				}
 			}
 			.p-three {
 				top: get-vh(290px);
@@ -139,6 +161,19 @@
 
 				transform: rotate(-30deg);
 				transition: transform 0.15s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+				@media screen and (max-width: 1100px) {
+					left: 25%;
+				}
+				@media screen and (max-width: 915px) {
+					left: 5%;
+				}
+				@media (max-height: 400px) and (max-width: 915px) {
+					left: get-vw(375px);
+				}
+				@media (max-height: 400px) and (max-width: 915px) {
+					left: get-vw(285px);
+				}
 			}
 			.p-four {
 				top: get-vh(320px);
@@ -148,6 +183,16 @@
 
 				transform: rotate(30deg);
 				transition: transform 0.15s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+				@media screen and (max-width: 1100px) {
+					right: 25%;
+				}
+				@media screen and (max-width: 915px) {
+					right: 5%;
+				}
+				@media (max-height: 400px) and (max-width: 915px) {
+					right: get-vw(345px);
+				}
 			}
 			.p-five {
 				top: get-vh(410px);
@@ -157,6 +202,16 @@
 
 				transform: rotate(30deg);
 				transition: transform 0.15s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+				@media screen and (max-width: 1100px) {
+					right: 36.5%;
+				}
+				@media screen and (max-width: 915px) {
+					right: 5%;
+				}
+				@media (max-height: 400px) and (max-width: 915px) {
+					right: get-vw(900px);
+				}
 			}
 			.p-six {
 				top: get-vh(330px);
@@ -166,6 +221,16 @@
 
 				transform: rotate(-15deg);
 				transition: transform 0.15s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+				@media screen and (max-width: 1100px) {
+					left: 39%;
+				}
+				@media screen and (max-width: 915px) {
+					left: 5%;
+				}
+				@media (max-height: 400px) and (max-width: 915px) {
+					left: get-vw(510px);
+				}
 			}
 		}
 	}

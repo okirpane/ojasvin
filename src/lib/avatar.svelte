@@ -22,7 +22,7 @@
             // max-height: 100vh;
             margin-top: -(get-vh(120px));
             @media screen and (max-width: 1024px) {
-                max-width: 110vw;
+                max-width: 100vw;
                 height: min(get-vh(825px), 90vh);
                 margin-top: 0%
             }

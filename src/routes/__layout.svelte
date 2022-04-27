@@ -200,6 +200,12 @@
 	});
 </script>
 
+<svelte:head>
+	{#each posts as post}
+		<link rel="preload" as="image" href={post.metadata.thumbnail} />
+	{/each}
+</svelte:head>
+
 <div id="container">
 	<!-- {JSON.stringify(posts)} -->
 	<canvas bind:this={canvas} id="bg-sketch" />

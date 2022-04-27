@@ -1,16 +1,34 @@
-<script>
+<script lang="ts">
 	import { aboutSwitch } from '$lib/aboutSwitch.js';
 	import { fade, fly } from 'svelte/transition';
+
+	let onCard: boolean = false;
+
+	let handleMouseOver = () => {
+		onCard = true;
+	};
+	let handleMouseOut = () => {
+		onCard = false;
+	};
+	let handleClick = () => {
+		if (onCard === false) aboutSwitch.turnOff();
+	};
 </script>
 
 <div class="container">
 	<div
 		in:fade={{ duration: 100 }}
-		out:fade={{ duration: 50 }}
-		on:click={aboutSwitch.turnOff}
+		out:fade={{ duration: 100 }}
+		on:click={handleClick}
 		class="below"
 	>
-		<main class="center">
+		<main
+			on:blur={() => {}}
+			on:focus={() => {}}
+			on:mouseover={handleMouseOver}
+			on:mouseout={handleMouseOut}
+			class="center"
+		>
 			<div class="outline-rect center">
 				<div class="content-container">
 					<img src="/assets/avatar-ojas-small.svg" alt="Ojas" class="logo" />
