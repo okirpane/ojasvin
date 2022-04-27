@@ -13,7 +13,7 @@
 <svelte:head>
 	<!-- Primary tags -->
 	<title>Ojasvin's Portfolio</title>
-	<meta name="Ojasvin's Portfolio" content="Feather" />
+	<meta name="title" content="Ojasvin's Portfolio" />
 	<meta
 		name="robots"
 		content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
