@@ -29,7 +29,7 @@
 	<!-- Open Graph -->
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="/" />
-	<meta property="og:title" content="Feather" />
+	<meta property="og:title" content="Ojasvin's Portfolio" />
 	<meta property="og:description" content="Ojasvin's Portfolio!" />
 	<meta property="og:image" content="https://ojasvin.me/assets/site-banner.webp" />
 	<meta property="og:image:alt" content="Ojasvin Portfolio!" />
