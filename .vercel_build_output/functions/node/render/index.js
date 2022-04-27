@@ -6175,12 +6175,12 @@ var init_layout_svelte = __esm({
 </div>`;
     });
     css$1 = {
-      code: "#avatar.svelte-186xxkw.svelte-186xxkw{width:100%;height:100%;display:grid;place-items:center}#avatar.svelte-186xxkw object.svelte-186xxkw{position:relative;height:120.6140350877vh;margin-top:-17.5438596491vh}@media screen and (max-width: 1024px){#avatar.svelte-186xxkw object.svelte-186xxkw{max-width:100vw;height:90vh;margin-top:0%}}",
+      code: "#avatar.svelte-yldonu.svelte-yldonu{width:100%;height:100%;display:grid;place-items:center}#avatar.svelte-yldonu .notLoaded.svelte-yldonu{opacity:0%;transition:opacity 0.6s cubic-bezier(0.075, 0.82, 0.165, 1)}#avatar.svelte-yldonu .loaded.svelte-yldonu{opacity:100%;transition:opacity 0.6s cubic-bezier(0.075, 0.82, 0.165, 1)}#avatar.svelte-yldonu object.svelte-yldonu{position:relative;height:120.6140350877vh;margin-top:-17.5438596491vh}@media screen and (max-width: 1024px){#avatar.svelte-yldonu object.svelte-yldonu{max-width:100vw;height:90vh;margin-top:0%}}",
       map: null
     };
     Avatar = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       $$result.css.add(css$1);
-      return `<div id="${"avatar"}" class="${"svelte-186xxkw"}"><object title="${"Ojasvin Avatar"}" type="${"image/svg+xml"}" data="${"/assets/avatar-ojas-calli.svg"}" class="${"svg-content svelte-186xxkw"}"></object>
+      return `<div id="${"avatar"}" class="${"svelte-yldonu"}"><object title="${"Ojasvin Avatar"}" type="${"image/svg+xml"}" data="${"/assets/avatar-ojas-calli.svg"}" class="${["svg-content notLoaded svelte-yldonu", ""].join(" ").trim()}"></object>
 </div>`;
     });
     css9 = {
@@ -6236,9 +6236,9 @@ var entry, js, css10;
 var init__ = __esm({
   ".svelte-kit/output/server/nodes/0.js"() {
     init_layout_svelte();
-    entry = "pages/__layout.svelte-b5074e3d.js";
-    js = ["pages/__layout.svelte-b5074e3d.js", "chunks/preload-helper-e4860ae8.js", "chunks/index-bc8992d0.js", "chunks/workSwitch-bbe443d7.js", "chunks/post-container.svelte_svelte_type_style_lang-9baaa190.js", "chunks/singletons-d1fb5791.js"];
-    css10 = ["assets/pages/__layout.svelte-8081b06b.css", "assets/post-container.svelte_svelte_type_style_lang-4393e908.css"];
+    entry = "pages/__layout.svelte-82447a0c.js";
+    js = ["pages/__layout.svelte-82447a0c.js", "chunks/preload-helper-e4860ae8.js", "chunks/index-bc8992d0.js", "chunks/workSwitch-bbe443d7.js", "chunks/post-container.svelte_svelte_type_style_lang-9baaa190.js", "chunks/singletons-d1fb5791.js"];
+    css10 = ["assets/pages/__layout.svelte-6dcda16b.css", "assets/post-container.svelte_svelte_type_style_lang-4393e908.css"];
   }
 });
 
@@ -8567,7 +8567,7 @@ var manifest = {
   assets: /* @__PURE__ */ new Set([".DS_Store", "assets/.DS_Store", "assets/OJ_FAVI.ico", "assets/OjasvinKirpane-Resume-Site.pdf", "assets/avatar-ojas-calli.svg", "assets/avatar-ojas-small.svg", "assets/close.svg", "assets/email.svg", "assets/post-1-image-banner.webp", "assets/post-1-image-card.webp", "assets/post-1-image-cta.webp", "assets/post-1-image-everything.webp", "assets/post-1-image-features.webp", "assets/post-1-image-flow.png", "assets/post-1-image-flow.webp", "assets/post-1-image-interface-1.webp", "assets/post-1-image-interface-2.webp", "assets/post-1-image-interface-3.webp", "assets/post-1-image-pitch-2.webp", "assets/post-1-image-pitch-3.webp", "assets/post-1-image-pitch.webp", "assets/post-1-image-team.webp", "assets/post-1-video-iterations.gif", "assets/post-1-video-onboarding.gif", "assets/post-1-video-style.gif", "assets/post-2-image-banner.webp", "assets/post-2-image-process.webp", "assets/post-2-image-product.webp", "assets/post-2-image-prog.webp", "assets/post-2-image-talent.webp", "assets/post-2-video-proto-1.mp4", "assets/post-2-video-proto-2-1.mp4", "assets/post-2-video-proto-2-2.mp4", "assets/post-2-video-proto-3-1.mp4", "assets/post-2-video-proto-3-2.mp4", "assets/post-3-image-banner.webp", "assets/post-3-image-calendar.webp", "assets/post-3-image-card-1.webp", "assets/post-3-image-card-2.webp", "assets/post-3-image-card-3.webp", "assets/post-3-image-process.webp", "assets/post-3-image-product.webp", "assets/post-3-image-sketch.webp", "assets/post-4-image-banner.webp", "assets/post-4-image-beauty.webp", "assets/post-4-image-dude.webp", "assets/post-4-image-example.webp", "assets/post-4-image-girl.webp", "assets/post-4-image-interface.webp", "assets/post-4-video-final.mp4", "assets/post-4-video-proto-1.mp4", "assets/post-4-video-proto-2.mp4", "assets/post-4-video-proto-3.mp4", "assets/post-6-image-iterations.webp", "assets/post-6-video-iterations.gif", "assets/site-banner.webp", "assets/sticker-bulbul.svg", "assets/sticker-duet.svg", "assets/sticker-feather.svg", "assets/sticker-gen.svg", "assets/sticker-timer.svg", "assets/sticker-varuna.svg", "favicon.png", "fonts/Bonkers.woff2", "fonts/plexBold.woff2", "fonts/plexLight.woff2", "fonts/plexRegular.woff2"]),
   mimeTypes: { ".ico": "image/vnd.microsoft.icon", ".pdf": "application/pdf", ".svg": "image/svg+xml", ".webp": "image/webp", ".png": "image/png", ".gif": "image/gif", ".mp4": "video/mp4", ".woff2": "font/woff2" },
   _: {
-    entry: { "file": "start-4c815663.js", "js": ["start-4c815663.js", "chunks/index-bc8992d0.js", "chunks/preload-helper-e4860ae8.js", "chunks/singletons-d1fb5791.js"], "css": [] },
+    entry: { "file": "start-6c28db35.js", "js": ["start-6c28db35.js", "chunks/index-bc8992d0.js", "chunks/preload-helper-e4860ae8.js", "chunks/singletons-d1fb5791.js"], "css": [] },
     nodes: [
       () => Promise.resolve().then(() => (init__(), __exports)),
       () => Promise.resolve().then(() => (init__2(), __exports2)),
