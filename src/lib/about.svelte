@@ -34,7 +34,7 @@
 					<img src="/assets/avatar-ojas-small.svg" alt="Ojas" class="logo" />
 					<div class="content">
 						Hey, I’m <b>Ojasvin Kirpane</b>. I’m a <b>designer who codes</b>. Checkout my
-						<a class="inline" href="/assets/email.svg" download>Resume</a>.
+						<a class="inline" target="_blank" href="/assets/OjasvinKirpane-Resume-Site.pdf" download>Resume</a>.
 					</div>
 				</div>
 			</div>
