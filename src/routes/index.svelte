@@ -29,7 +29,7 @@
 
 	<!-- Open Graph -->
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="/" />
+	<meta property="og:url" content="https://ojasvin.me/" />
 	<meta property="og:title" content="Ojasvin's Portfolio" />
 	<meta property="og:description" content="I'm a designer who codes." />
 	<meta property="og:image" content="https://ojasvin.me/assets/screen-banner.jpg" />
