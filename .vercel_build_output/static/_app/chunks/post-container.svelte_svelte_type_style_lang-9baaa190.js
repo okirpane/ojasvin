@@ -1,3 +1,0 @@
-import{c as o}from"./singletons-d1fb5791.js";import{W as _}from"./index-bc8992d0.js";o.disable_scroll_handling;const v=o.goto;o.invalidate;o.prefetch;o.prefetch_routes;o.before_navigate;o.after_navigate;function g(e){const t=e-1;return t*t*t+1}function $(e,{delay:t=0,duration:n=400,easing:a=_}={}){const r=+getComputedStyle(e).opacity;return{delay:t,duration:n,easing:a,css:s=>`opacity: ${s*r}`}}function b(e,{delay:t=0,duration:n=400,easing:a=g,x:r=0,y:s=0,opacity:p=0}={}){const c=getComputedStyle(e),i=+c.opacity,l=c.transform==="none"?"":c.transform,y=i*(1-p);return{delay:t,duration:n,easing:a,css:(f,u)=>`
-			transform: ${l} translate(${(1-f)*r}px, ${(1-f)*s}px);
-			opacity: ${i-y*u}`}}export{$ as a,b as f,v as g};

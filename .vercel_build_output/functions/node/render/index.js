@@ -1626,10 +1626,10 @@ var init_install_fetch = __esm({
           [PullSteps](readRequest) {
             const stream = this._controlledReadableByteStream;
             if (this._queueTotalSize > 0) {
-              const entry11 = this._queue.shift();
-              this._queueTotalSize -= entry11.byteLength;
+              const entry12 = this._queue.shift();
+              this._queueTotalSize -= entry12.byteLength;
               ReadableByteStreamControllerHandleQueueDrain(this);
-              const view = new Uint8Array(entry11.buffer, entry11.byteOffset, entry11.byteLength);
+              const view = new Uint8Array(entry12.buffer, entry12.byteOffset, entry12.byteLength);
               readRequest._chunkSteps(view);
               return;
             }
@@ -5407,7 +5407,7 @@ var init_install_fetch = __esm({
   }
 });
 
-// .svelte-kit/output/server/chunks/index-1c45052d.js
+// .svelte-kit/output/server/chunks/index-bbc07b1b.js
 function noop2() {
 }
 function run(fn) {
@@ -5436,12 +5436,21 @@ function get_current_component() {
 }
 function setContext(key2, context) {
   get_current_component().$$.context.set(key2, context);
+  return context;
 }
-function escape(html) {
-  return String(html).replace(/["'&<>]/g, (match) => escaped[match]);
-}
-function escape_attribute_value(value) {
-  return typeof value === "string" ? escape(value) : value;
+function escape(value, is_attr = false) {
+  const str = String(value);
+  const pattern = is_attr ? ATTR_REGEX : CONTENT_REGEX;
+  pattern.lastIndex = 0;
+  let escaped2 = "";
+  let last = 0;
+  while (pattern.test(str)) {
+    const i2 = pattern.lastIndex - 1;
+    const ch = str[i2];
+    escaped2 += str.substring(last, i2) + (ch === "&" ? "&amp;" : ch === '"' ? "&quot;" : "&lt;");
+    last = i2 + 1;
+  }
+  return escaped2 + str.substring(last);
 }
 function each(items, fn) {
   let str = "";
@@ -5454,7 +5463,7 @@ function validate_component(component, name) {
   if (!component || !component.$$render) {
     if (name === "svelte:component")
       name += " this={...}";
-    throw new Error(`<${name}> is not a valid SSR component. You may need to review your build config to ensure that dependencies are compiled, rather than imported as pre-compiled modules`);
+    throw new Error(`<${name}> is not a valid SSR component. You may need to review your build config to ensure that dependencies are compiled, rather than imported as pre-compiled modules. Otherwise you may need to fix a <${name}>.`);
   }
   return component;
 }
@@ -5483,7 +5492,7 @@ function create_ssr_component(fn) {
       return {
         html,
         css: {
-          code: Array.from(result.css).map((css21) => css21.code).join("\n"),
+          code: Array.from(result.css).map((css23) => css23.code).join("\n"),
           map: null
         },
         head: result.title + result.head
@@ -5495,20 +5504,14 @@ function create_ssr_component(fn) {
 function add_attribute(name, value, boolean) {
   if (value == null || boolean && !value)
     return "";
-  const assignment = boolean && value === true ? "" : `="${escape_attribute_value(value.toString())}"`;
+  const assignment = boolean && value === true ? "" : `="${escape(value, true)}"`;
   return ` ${name}${assignment}`;
 }
-var current_component, escaped, missing_component, on_destroy;
-var init_index_1c45052d = __esm({
-  ".svelte-kit/output/server/chunks/index-1c45052d.js"() {
-    Promise.resolve();
-    escaped = {
-      '"': "&quot;",
-      "'": "&#39;",
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;"
-    };
+var current_component, ATTR_REGEX, CONTENT_REGEX, missing_component, on_destroy;
+var init_index_bbc07b1b = __esm({
+  ".svelte-kit/output/server/chunks/index-bbc07b1b.js"() {
+    ATTR_REGEX = /[&"]/g;
+    CONTENT_REGEX = /[&<]/g;
     missing_component = {
       $$render: () => ""
     };
@@ -5532,11 +5535,11 @@ function svelte_fsm_default(state, states = {}) {
     return () => subscribers.delete(callback);
   }
   function transition(newState, event, args) {
-    const metadata7 = { from: state, to: newState, event, args };
-    dispatch("_exit", metadata7);
+    const metadata8 = { from: state, to: newState, event, args };
+    dispatch("_exit", metadata8);
     state = newState;
     subscribers.forEach((callback) => callback(state));
-    dispatch("_enter", metadata7);
+    dispatch("_enter", metadata8);
   }
   function dispatch(event, ...args) {
     var _a4, _b;
@@ -5611,11 +5614,11 @@ var init_workSwitch_ea5ed9a2 = __esm({
   }
 });
 
-// .svelte-kit/output/server/chunks/post-container-fd251d68.js
+// .svelte-kit/output/server/chunks/post-container-ac8cdf14.js
 var css, Post_container;
-var init_post_container_fd251d68 = __esm({
-  ".svelte-kit/output/server/chunks/post-container-fd251d68.js"() {
-    init_index_1c45052d();
+var init_post_container_ac8cdf14 = __esm({
+  ".svelte-kit/output/server/chunks/post-container-ac8cdf14.js"() {
+    init_index_bbc07b1b();
     init_workSwitch_ea5ed9a2();
     css = {
       code: "main.svelte-1ai0m5w.svelte-1ai0m5w{width:100vw;position:fixed;overflow-y:scroll;top:0;right:0;bottom:0;left:0;background:rgba(247, 250, 255, 0.25)}main.svelte-1ai0m5w #content-container.svelte-1ai0m5w{margin:10vh auto;position:relative;z-index:3;width:clamp(320px, 100vw - 60px, 55.5555555556vw);max-width:900px;padding:15px;min-height:fit-content;background:#f7faff;box-shadow:0px 0px 3px rgba(0, 0, 0, 0.08), 0px 0px 12px rgba(0, 0, 0, 0.05);border-radius:6px}@media screen and (max-width: 810px){main.svelte-1ai0m5w #content-container.svelte-1ai0m5w{max-width:100%;width:85%}}main.svelte-1ai0m5w #content-container .padding.svelte-1ai0m5w{position:relative;max-width:100%;height:100%;padding:5% 5% 10% 5%}main.svelte-1ai0m5w #content-container .padding .close img.svelte-1ai0m5w{cursor:pointer;position:absolute;padding:1.5% 0%;right:4%}",
@@ -5623,7 +5626,7 @@ var init_post_container_fd251d68 = __esm({
     };
     Post_container = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       $$result.css.add(css);
-      return `<main class="${"overlay svelte-1ai0m5w"}"><div id="${"content-container"}" class="${"svelte-1ai0m5w"}"><div class="${"padding svelte-1ai0m5w"}"><div class="${"close"}"><img src="${"/assets/close.svg"}" alt="${"close"}" class="${"svelte-1ai0m5w"}"></div>
+      return `<main class="overlay svelte-1ai0m5w"><div id="content-container" class="svelte-1ai0m5w"><div class="padding svelte-1ai0m5w"><div class="close"><img src="/assets/close.svg" alt="close" class="svelte-1ai0m5w"></div>
 			${slots.default ? slots.default({}) : ``}</div></div>
 	
 </main>`;
@@ -5631,13 +5634,13 @@ var init_post_container_fd251d68 = __esm({
   }
 });
 
-// .svelte-kit/output/server/chunks/meta-c01f733a.js
+// .svelte-kit/output/server/chunks/meta-f5d2df08.js
 var Meta;
-var init_meta_c01f733a = __esm({
-  ".svelte-kit/output/server/chunks/meta-c01f733a.js"() {
-    init_index_1c45052d();
+var init_meta_f5d2df08 = __esm({
+  ".svelte-kit/output/server/chunks/meta-f5d2df08.js"() {
+    init_index_bbc07b1b();
     Meta = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      return `${$$result.head += `${slots.default ? slots.default({}) : ``}`, ""}`;
+      return `${$$result.head += `<!-- HEAD_svelte-casrac_START -->${slots.default ? slots.default({}) : ``}<!-- HEAD_svelte-casrac_END -->`, ""}`;
     });
   }
 });
@@ -5651,9 +5654,9 @@ __export(post_1_feather_md_exports, {
 var css2, metadata, title, thumbnail, Post_1_feather;
 var init_post_1_feather_md = __esm({
   ".svelte-kit/output/server/entries/pages/post-1-feather.md.js"() {
-    init_index_1c45052d();
-    init_post_container_fd251d68();
-    init_meta_c01f733a();
+    init_index_bbc07b1b();
+    init_post_container_ac8cdf14();
+    init_meta_f5d2df08();
     init_workSwitch_ea5ed9a2();
     css2 = {
       code: "h1.svelte-1x5yqvt{margin:0%;font-size:30px}p.svelte-1x5yqvt,li.svelte-1x5yqvt{overflow-wrap:break-word;max-width:100%;font-size:20px;line-height:40px}a.svelte-1x5yqvt{font-weight:700;color:#99c0ff;text-decoration:none;transition:color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1)}img.svelte-1x5yqvt{max-width:100%;border:1px solid rgba(128, 44, 54, 0.2);border-radius:6px}a.svelte-1x5yqvt:hover{transition:color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);color:#66a0ff}",
@@ -5670,67 +5673,67 @@ var init_post_1_feather_md = __esm({
       return `${validate_component(Meta, "Meta").$$render($$result, {}, {}, {
         default: () => {
           return `<title>${escape(title)}</title>
-	<meta name="${"title"}"${add_attribute("content", title, 0)}>
-	<meta name="${"robots"}" content="${"index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}">
+	<meta name="title"${add_attribute("content", title, 0)}>
+	<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 	
-	<meta name="${"twitter:card"}" content="${"summary_large_image"}">
-	<meta name="${"twitter:text:title"}"${add_attribute("content", "Ojasvin's Portfolio - " + title, 0)}>
-	<meta name="${"twitter:card"}" content="${"summary_large_image"}">
-	<meta name="${"twitter:image"}" content="${"https://ojasvin.me/assets/post-1-image-banner.webp"}">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:text:title"${add_attribute("content", "Ojasvin's Portfolio - " + title, 0)}>
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://ojasvin.me/assets/post-1-image-banner.webp">
 	
-	<meta property="${"og:type"}" content="${"website"}">
-	<meta property="${"og:url"}" content="${"/"}">
-	<meta property="${"og:title"}"${add_attribute("content", title, 0)}>
-	<meta property="${"og:description"}"${add_attribute("content", "Ojasvin's Portfolio - " + title, 0)}>
-	<meta property="${"og:image"}" content="${"https://ojasvin.me/assets/post-1-image-banner.webp"}">
-	<meta property="${"og:image:alt"}" content="${"Ojasvin's Portfolio!"}">`;
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="/">
+	<meta property="og:title"${add_attribute("content", title, 0)}>
+	<meta property="og:description"${add_attribute("content", "Ojasvin's Portfolio - " + title, 0)}>
+	<meta property="og:image" content="https://ojasvin.me/assets/post-1-image-banner.webp">
+	<meta property="og:image:alt" content="Ojasvin's Portfolio!">`;
         }
       })}
 ${validate_component(Post_container, "PostContainer").$$render($$result, {}, {}, {
         default: () => {
-          return `<h1 class="${"svelte-1x5yqvt"}">${escape(title)}</h1>
-<p class="${"svelte-1x5yqvt"}"><strong>Intro:</strong> In a nutshell, Feather brings zero-config distributed computing to consumers with a unique approach to remote desktop technology. Feather aims to give users the ability to run intensive software on even the weakest devices. (Check it out <a href="${"https://feather.systems/"}" rel="${"nofollow"}" class="${"svelte-1x5yqvt"}">here</a>)</p>
-<p class="${"svelte-1x5yqvt"}"><img src="${"/assets/post-1-image-banner.webp"}" alt="${escape(title) + " Banner"}" class="${"svelte-1x5yqvt"}"></p>
-<p class="${"svelte-1x5yqvt"}"><strong>Team:</strong> Co-founded Feather with 3 incredibly talented engineers &amp; creatives.</p>
-<p class="${"svelte-1x5yqvt"}"><img src="${"/assets/post-1-image-team.webp"}" alt="${escape(title) + " Banner"}" class="${"svelte-1x5yqvt"}"></p>
-<p class="${"svelte-1x5yqvt"}"><strong>How Design Helped:</strong> In early-stage startups, design can lend a lot of credence to the founding team. It can give investors a better idea of what your value proposition is through visuals. I can also smooth over early prototypes and give users a better experience with early tech. Our goals with the designs were the following:</p>
-<ol><li class="${"svelte-1x5yqvt"}">Improve website layout &amp; communication to convert users.</li>
-<li class="${"svelte-1x5yqvt"}">Create a butter smooth user experience to fit our app seamlessly into users\u2019 existing workflows.</li>
-<li class="${"svelte-1x5yqvt"}">Improve pitch messaging to convert more investors.</li></ol>
-<p class="${"svelte-1x5yqvt"}"><img src="${"/assets/post-1-image-everything.webp"}" alt="${"Card"}" class="${"svelte-1x5yqvt"}"></p>
-<p class="${"svelte-1x5yqvt"}"><strong>Website:</strong> When we started, we didn\u2019t really have a clear direction. When people would come to our site, they would see some vague pitch about \u201CThe future of computing\u201D and leave. We wanted to be specific about what we did &amp; how the user could benefit. So, we redesigned &amp; increased sign-ups for our alpha product &amp; newsletter by 75%.</p>
-<p class="${"svelte-1x5yqvt"}">Our iterations for the new site:</p>
-<p class="${"svelte-1x5yqvt"}"><img src="${"/assets/post-1-video-iterations.gif"}" alt="${"Iterations"}" class="${"svelte-1x5yqvt"}"></p>
-<p class="${"svelte-1x5yqvt"}"><img src="${"/assets/post-1-image-features.webp"}" alt="${"Feature Illustrations"}" class="${"svelte-1x5yqvt"}"></p>
-<p class="${"svelte-1x5yqvt"}"><img src="${"/assets/post-1-video-onboarding.gif"}" alt="${"Onboarding"}" class="${"svelte-1x5yqvt"}"></p>
-<p class="${"svelte-1x5yqvt"}"><img src="${"/assets/post-1-image-cta.webp"}" alt="${"CTA"}" class="${"svelte-1x5yqvt"}"></p>
-<p class="${"svelte-1x5yqvt"}"><strong>Desktop App:</strong> We had rigorous pre-alpha testing. Before the app was released to the public, it was tested almost constantly by the team, a few friends and enthusiasts in our network. I also lead our front-end development effort &amp; was able to rapidly implement &amp; gain insights on everything from wireframes, to live interaction with the product.</p>
-<p class="${"svelte-1x5yqvt"}"><img src="${"/assets/post-1-image-flow.webp"}" alt="${"Flow"}" class="${"svelte-1x5yqvt"}"></p>
-<p class="${"svelte-1x5yqvt"}"><img src="${"/assets/post-1-video-style.gif"}" alt="${"Style Iterations"}" class="${"svelte-1x5yqvt"}"></p>
-<p class="${"svelte-1x5yqvt"}"><img src="${"/assets/post-1-image-interface-1.webp"}" alt="${"Interface"}" class="${"svelte-1x5yqvt"}"></p>
-<p class="${"svelte-1x5yqvt"}"><img src="${"/assets/post-1-image-interface-2.webp"}" alt="${"Interface"}" class="${"svelte-1x5yqvt"}"></p>
-<p class="${"svelte-1x5yqvt"}"><img src="${"/assets/post-1-image-interface-3.webp"}" alt="${"Interface"}" class="${"svelte-1x5yqvt"}"></p>
-<p class="${"svelte-1x5yqvt"}"><strong>Pitch Deck:</strong> Our pitch deck is amazing. I collaborated with my co-founder Kyle on bringing it to reality. This deck also went through several versions. The version we landed on is professional &amp; self-assured. It communicates our idea, our research and our plan clearly. You can check it out <a href="${"https://brieflink.com/v/pomaf/"}" rel="${"nofollow"}" class="${"svelte-1x5yqvt"}">here</a> (Seriously, check it out, it\u2019s beautiful).</p>
-<p class="${"svelte-1x5yqvt"}"><img src="${"/assets/post-1-image-pitch.webp"}" alt="${"Pitch"}" class="${"svelte-1x5yqvt"}">
-<img src="${"/assets/post-1-image-pitch-2.webp"}" alt="${"Pitch"}" class="${"svelte-1x5yqvt"}">
-<img src="${"/assets/post-1-image-pitch-3.webp"}" alt="${"Pitch"}" class="${"svelte-1x5yqvt"}"></p>
-<p class="${"svelte-1x5yqvt"}"><strong>Conclusion:</strong> We were able to:</p>
-<ol><li class="${"svelte-1x5yqvt"}">Increase sign-ups on the website by 75% through our improved site design.</li>
-<li class="${"svelte-1x5yqvt"}">Secured 45+ web sign-ups in a week for our launch with no marketing budget.</li>
-<li class="${"svelte-1x5yqvt"}">Increase the usability of our demo &amp; retain users through our app interface.</li>
-<li class="${"svelte-1x5yqvt"}">Increase VC meeting conversions by 50% &amp; raise an angel investing round of $200,000.</li></ol>
-<p class="${"svelte-1x5yqvt"}"><em>\u2728Thanks for reading\u2728</em></p>`;
+          return `<h1 class="svelte-1x5yqvt">${escape(title)}</h1>
+<p class="svelte-1x5yqvt"><strong>Intro:</strong> In a nutshell, Feather brings zero-config distributed computing to consumers with a unique approach to remote desktop technology. Feather aims to give users the ability to run intensive software on even the weakest devices. (Check it out <a href="https://feather.systems/" rel="nofollow" class="svelte-1x5yqvt">here</a>)</p>
+<p class="svelte-1x5yqvt"><img src="/assets/post-1-image-banner.webp" alt="${escape(title, true) + " Banner"}" class="svelte-1x5yqvt"></p>
+<p class="svelte-1x5yqvt"><strong>Team:</strong> Co-founded Feather with 3 incredibly talented engineers &amp; creatives.</p>
+<p class="svelte-1x5yqvt"><img src="/assets/post-1-image-team.webp" alt="${escape(title, true) + " Banner"}" class="svelte-1x5yqvt"></p>
+<p class="svelte-1x5yqvt"><strong>How Design Helped:</strong> In early-stage startups, design can lend a lot of credence to the founding team. It can give investors a better idea of what your value proposition is through visuals. I can also smooth over early prototypes and give users a better experience with early tech. Our goals with the designs were the following:</p>
+<ol><li class="svelte-1x5yqvt">Improve website layout &amp; communication to convert users.</li>
+<li class="svelte-1x5yqvt">Create a butter smooth user experience to fit our app seamlessly into users\u2019 existing workflows.</li>
+<li class="svelte-1x5yqvt">Improve pitch messaging to convert more investors.</li></ol>
+<p class="svelte-1x5yqvt"><img src="/assets/post-1-image-everything.webp" alt="Card" class="svelte-1x5yqvt"></p>
+<p class="svelte-1x5yqvt"><strong>Website:</strong> When we started, we didn\u2019t really have a clear direction. When people would come to our site, they would see some vague pitch about \u201CThe future of computing\u201D and leave. We wanted to be specific about what we did &amp; how the user could benefit. So, we redesigned &amp; increased sign-ups for our alpha product &amp; newsletter by 75%.</p>
+<p class="svelte-1x5yqvt">Our iterations for the new site:</p>
+<p class="svelte-1x5yqvt"><img src="/assets/post-1-video-iterations.gif" alt="Iterations" class="svelte-1x5yqvt"></p>
+<p class="svelte-1x5yqvt"><img src="/assets/post-1-image-features.webp" alt="Feature Illustrations" class="svelte-1x5yqvt"></p>
+<p class="svelte-1x5yqvt"><img src="/assets/post-1-video-onboarding.gif" alt="Onboarding" class="svelte-1x5yqvt"></p>
+<p class="svelte-1x5yqvt"><img src="/assets/post-1-image-cta.webp" alt="CTA" class="svelte-1x5yqvt"></p>
+<p class="svelte-1x5yqvt"><strong>Desktop App:</strong> We had rigorous pre-alpha testing. Before the app was released to the public, it was tested almost constantly by the team, a few friends and enthusiasts in our network. I also lead our front-end development effort &amp; was able to rapidly implement &amp; gain insights on everything from wireframes, to live interaction with the product.</p>
+<p class="svelte-1x5yqvt"><img src="/assets/post-1-image-flow.webp" alt="Flow" class="svelte-1x5yqvt"></p>
+<p class="svelte-1x5yqvt"><img src="/assets/post-1-video-style.gif" alt="Style Iterations" class="svelte-1x5yqvt"></p>
+<p class="svelte-1x5yqvt"><img src="/assets/post-1-image-interface-1.webp" alt="Interface" class="svelte-1x5yqvt"></p>
+<p class="svelte-1x5yqvt"><img src="/assets/post-1-image-interface-2.webp" alt="Interface" class="svelte-1x5yqvt"></p>
+<p class="svelte-1x5yqvt"><img src="/assets/post-1-image-interface-3.webp" alt="Interface" class="svelte-1x5yqvt"></p>
+<p class="svelte-1x5yqvt"><strong>Pitch Deck:</strong> Our pitch deck is amazing. I collaborated with my co-founder Kyle on bringing it to reality. This deck also went through several versions. The version we landed on is professional &amp; self-assured. It communicates our idea, our research and our plan clearly. You can check it out <a href="https://brieflink.com/v/pomaf/" rel="nofollow" class="svelte-1x5yqvt">here</a> (Seriously, check it out, it\u2019s beautiful).</p>
+<p class="svelte-1x5yqvt"><img src="/assets/post-1-image-pitch.webp" alt="Pitch" class="svelte-1x5yqvt">
+<img src="/assets/post-1-image-pitch-2.webp" alt="Pitch" class="svelte-1x5yqvt">
+<img src="/assets/post-1-image-pitch-3.webp" alt="Pitch" class="svelte-1x5yqvt"></p>
+<p class="svelte-1x5yqvt"><strong>Conclusion:</strong> We were able to:</p>
+<ol><li class="svelte-1x5yqvt">Increase sign-ups on the website by 75% through our improved site design.</li>
+<li class="svelte-1x5yqvt">Secured 45+ web sign-ups in a week for our launch with no marketing budget.</li>
+<li class="svelte-1x5yqvt">Increase the usability of our demo &amp; retain users through our app interface.</li>
+<li class="svelte-1x5yqvt">Increase VC meeting conversions by 50% &amp; raise an angel investing round of $200,000.</li></ol>
+<p class="svelte-1x5yqvt"><em>\u2728Thanks for reading\u2728</em></p>`;
         }
       })}`;
     });
   }
 });
 
-// .svelte-kit/output/server/chunks/video-insert-9d1f2164.js
+// .svelte-kit/output/server/chunks/video-insert-bb35ee4b.js
 var css3, Video_insert;
-var init_video_insert_9d1f2164 = __esm({
-  ".svelte-kit/output/server/chunks/video-insert-9d1f2164.js"() {
-    init_index_1c45052d();
+var init_video_insert_bb35ee4b = __esm({
+  ".svelte-kit/output/server/chunks/video-insert-bb35ee4b.js"() {
+    init_index_bbc07b1b();
     css3 = {
       code: "video.svelte-13mblsi{width:100%;max-width:100%;margin-left:auto;margin-right:auto;border:1px solid rgba(115, 181, 191, 0.2);border-radius:6px}",
       map: null
@@ -5740,7 +5743,7 @@ var init_video_insert_9d1f2164 = __esm({
       if ($$props.source === void 0 && $$bindings.source && source !== void 0)
         $$bindings.source(source);
       $$result.css.add(css3);
-      return `<video controls class="${"svelte-13mblsi"}"><source${add_attribute("src", source, 0)} type="${"video/mp4"}"><track kind="${"captions"}">
+      return `<video controls class="svelte-13mblsi"><source${add_attribute("src", source, 0)} type="video/mp4"><track kind="captions">
 	Sorry, your browser doesn&#39;t support embedded videos.
 </video>`;
     });
@@ -5756,10 +5759,10 @@ __export(post_2_bulbul_md_exports, {
 var css4, metadata2, title2, thumbnail2, Post_2_bulbul;
 var init_post_2_bulbul_md = __esm({
   ".svelte-kit/output/server/entries/pages/post-2-bulbul.md.js"() {
-    init_index_1c45052d();
-    init_post_container_fd251d68();
-    init_meta_c01f733a();
-    init_video_insert_9d1f2164();
+    init_index_bbc07b1b();
+    init_post_container_ac8cdf14();
+    init_meta_f5d2df08();
+    init_video_insert_bb35ee4b();
     init_workSwitch_ea5ed9a2();
     css4 = {
       code: "h1.svelte-18ngz2l{margin:0%;font-size:30px}p.svelte-18ngz2l,li.svelte-18ngz2l{overflow-wrap:break-word;max-width:100%;font-size:20px;line-height:40px}a.svelte-18ngz2l{font-weight:700;color:#99c0ff;text-decoration:none;transition:color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1)}img.svelte-18ngz2l{max-width:100%;border:1px solid rgba(115, 181, 191, 0.2);border-radius:6px}a.svelte-18ngz2l:hover{transition:color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);color:#66a0ff}iframe.svelte-18ngz2l{max-width:100%;width:100%;margin-left:auto;margin-right:auto;border:1px solid rgba(115, 181, 191, 0.2);border-radius:6px}",
@@ -5776,60 +5779,60 @@ var init_post_2_bulbul_md = __esm({
       return `${validate_component(Meta, "Meta").$$render($$result, {}, {}, {
         default: () => {
           return `<title>${escape(title2)}</title>
-	<meta name="${"title"}"${add_attribute("content", title2, 0)}>
-	<meta name="${"robots"}" content="${"index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}">
+	<meta name="title"${add_attribute("content", title2, 0)}>
+	<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 	
-	<meta name="${"twitter:card"}" content="${"summary_large_image"}">
-	<meta name="${"twitter:text:title"}"${add_attribute("content", "Ojasvin's Portfolio - " + title2, 0)}>
-	<meta name="${"twitter:card"}" content="${"summary_large_image"}">
-	<meta name="${"twitter:image"}" content="${"https://ojasvin.me/assets/post-2-image-banner.webp"}">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:text:title"${add_attribute("content", "Ojasvin's Portfolio - " + title2, 0)}>
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://ojasvin.me/assets/post-2-image-banner.webp">
 	
-	<meta property="${"og:type"}" content="${"website"}">
-	<meta property="${"og:url"}" content="${"/"}">
-	<meta property="${"og:title"}"${add_attribute("content", title2, 0)}>
-	<meta property="${"og:description"}"${add_attribute("content", "Ojasvin's Portfolio - " + title2, 0)}>
-	<meta property="${"og:image"}" content="${"https://ojasvin.me/assets/post-2-image-banner.webp"}">
-	<meta property="${"og:image:alt"}" content="${"Ojasvin's Portfolio!"}">`;
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="/">
+	<meta property="og:title"${add_attribute("content", title2, 0)}>
+	<meta property="og:description"${add_attribute("content", "Ojasvin's Portfolio - " + title2, 0)}>
+	<meta property="og:image" content="https://ojasvin.me/assets/post-2-image-banner.webp">
+	<meta property="og:image:alt" content="Ojasvin's Portfolio!">`;
         }
       })}
 ${validate_component(Post_container, "PostContainer").$$render($$result, {}, {}, {
         default: () => {
-          return `<h1 class="${"svelte-18ngz2l"}">${escape(title2)}</h1>
-<p class="${"svelte-18ngz2l"}"><strong>Intro:</strong> Bulbul is a procedural music application that generates expressive pieces of music using interactive markov chains. Check it out <a href="${"https://pretentious7.github.io/Bulbul-lite/"}" rel="${"nofollow"}" class="${"svelte-18ngz2l"}">here</a>.</p>
-<p class="${"svelte-18ngz2l"}"><img src="${"/assets/post-2-image-banner.webp"}" alt="${"Bulbul Banner"}" class="${"svelte-18ngz2l"}"></p>
-<p class="${"svelte-18ngz2l"}"><img src="${"/assets/post-2-image-product.webp"}" alt="${"Screenshot"}" class="${"svelte-18ngz2l"}"></p>
-<p class="${"svelte-18ngz2l"}"><strong>Context:</strong> I\u2019ve always wanted to make music. But, I\u2019m held back by my lacklustre amounts of musical talent. So, I decided to use my thesis project as an oppurtunity to make a computer make music for me.</p>
-<p class="${"svelte-18ngz2l"}"><img src="${"/assets/post-2-image-talent.webp"}" alt="${"Bulbul Banner"}" class="${"svelte-18ngz2l"}"></p>
-<p class="${"svelte-18ngz2l"}"><strong>Guiding Concepts:</strong>  Two major concepts shaped the development of Bulbul:</p>
-<ol><li class="${"svelte-18ngz2l"}">A <strong>Meta-instrument</strong> is a network of ideas and concerns that are \u2018played\u2019 in the creative process to make the aesthetics and philosophies of a given project.</li>
-<li class="${"svelte-18ngz2l"}"><strong>Procedural Music</strong> is merely composition expressed as a set of principles and procedures. This kind of music composition is exemplified by artists like Steve Reich &amp; Brian Eno. It\u2019s a philosophy for creating art.</li></ol>
-<p class="${"svelte-18ngz2l"}">Here\u2019s an example of procedural music:</p>
-<iframe width="${"397"}" height="${"298"}" src="${"https://www.youtube.com/embed/vugqRAX7xQE"}" title="${"YouTube video player"}" frameborder="${"0"}" allow="${"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"}" allowfullscreen class="${"svelte-18ngz2l"}"></iframe>
-<p class="${"svelte-18ngz2l"}"><strong>Technical Approach:</strong> The Technique/Procedure we used for generating music is called \u201CInteractive Markov Chains\u201D. A Markov chain is a mathematical system that experiences transitions from one state to another according to certain probabilistic rules. An interactive Markov Chain basically allows you to change those probabilistic rules through an interface.</p>
-<p class="${"svelte-18ngz2l"}"><img src="${"/assets/post-2-image-prog.webp"}" alt="${"Markov Chains"}" class="${"svelte-18ngz2l"}"></p>
-<p class="${"svelte-18ngz2l"}"><strong>Design Approach:</strong> To create this project I collaborated with Abhishek Cherath a physics student at Stony Brook University. We executed this project by setting goals and conducting three 36 hour development sprints over a semester with user testing between them to properly orient the development process.</p>
-<p class="${"svelte-18ngz2l"}"><img src="${"/assets/post-2-image-process.webp"}" alt="${"Process"}" class="${"svelte-18ngz2l"}"></p>
-<p class="${"svelte-18ngz2l"}"><strong>Iteration One:</strong> The first iteration was a paper prototype. I obscured the interface of a weird synth app on an iPad. This was to encourage users to interact with making music semi-divorced from regular music interfaces. Here\u2019s an excerpt from the testing process:</p>
+          return `<h1 class="svelte-18ngz2l">${escape(title2)}</h1>
+<p class="svelte-18ngz2l"><strong>Intro:</strong> Bulbul is a procedural music application that generates expressive pieces of music using interactive markov chains. Check it out <a href="https://pretentious7.github.io/Bulbul-lite/" rel="nofollow" class="svelte-18ngz2l">here</a>.</p>
+<p class="svelte-18ngz2l"><img src="/assets/post-2-image-banner.webp" alt="Bulbul Banner" class="svelte-18ngz2l"></p>
+<p class="svelte-18ngz2l"><img src="/assets/post-2-image-product.webp" alt="Screenshot" class="svelte-18ngz2l"></p>
+<p class="svelte-18ngz2l"><strong>Context:</strong> I\u2019ve always wanted to make music. But, I\u2019m held back by my lacklustre amounts of musical talent. So, I decided to use my thesis project as an oppurtunity to make a computer make music for me.</p>
+<p class="svelte-18ngz2l"><img src="/assets/post-2-image-talent.webp" alt="Bulbul Banner" class="svelte-18ngz2l"></p>
+<p class="svelte-18ngz2l"><strong>Guiding Concepts:</strong>  Two major concepts shaped the development of Bulbul:</p>
+<ol><li class="svelte-18ngz2l">A <strong>Meta-instrument</strong> is a network of ideas and concerns that are \u2018played\u2019 in the creative process to make the aesthetics and philosophies of a given project.</li>
+<li class="svelte-18ngz2l"><strong>Procedural Music</strong> is merely composition expressed as a set of principles and procedures. This kind of music composition is exemplified by artists like Steve Reich &amp; Brian Eno. It\u2019s a philosophy for creating art.</li></ol>
+<p class="svelte-18ngz2l">Here\u2019s an example of procedural music:</p>
+<iframe width="397" height="298" src="https://www.youtube.com/embed/vugqRAX7xQE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="svelte-18ngz2l"></iframe>
+<p class="svelte-18ngz2l"><strong>Technical Approach:</strong> The Technique/Procedure we used for generating music is called \u201CInteractive Markov Chains\u201D. A Markov chain is a mathematical system that experiences transitions from one state to another according to certain probabilistic rules. An interactive Markov Chain basically allows you to change those probabilistic rules through an interface.</p>
+<p class="svelte-18ngz2l"><img src="/assets/post-2-image-prog.webp" alt="Markov Chains" class="svelte-18ngz2l"></p>
+<p class="svelte-18ngz2l"><strong>Design Approach:</strong> To create this project I collaborated with Abhishek Cherath a physics student at Stony Brook University. We executed this project by setting goals and conducting three 36 hour development sprints over a semester with user testing between them to properly orient the development process.</p>
+<p class="svelte-18ngz2l"><img src="/assets/post-2-image-process.webp" alt="Process" class="svelte-18ngz2l"></p>
+<p class="svelte-18ngz2l"><strong>Iteration One:</strong> The first iteration was a paper prototype. I obscured the interface of a weird synth app on an iPad. This was to encourage users to interact with making music semi-divorced from regular music interfaces. Here\u2019s an excerpt from the testing process:</p>
 ${validate_component(Video_insert, "Video").$$render($$result, {
             source: "/assets/post-2-video-proto-1.mp4"
           }, {}, {})}
-<p class="${"svelte-18ngz2l"}"><strong>Iteration Two:</strong> Prototype two was my first digital prototype. It was a quick program made with Java in the Processing library. The objective was to compare and contrast the paper prototype with the new digital interface.</p>
+<p class="svelte-18ngz2l"><strong>Iteration Two:</strong> Prototype two was my first digital prototype. It was a quick program made with Java in the Processing library. The objective was to compare and contrast the paper prototype with the new digital interface.</p>
 ${validate_component(Video_insert, "Video").$$render($$result, {
             source: "/assets/post-2-video-proto-2-1.mp4"
           }, {}, {})}
 ${validate_component(Video_insert, "Video").$$render($$result, {
             source: "/assets/post-2-video-proto-2-2.mp4"
           }, {}, {})}
-<p class="${"svelte-18ngz2l"}"><strong>Iteration Three:</strong>  This round of prototyping was more informal. I wanted to test out existing music projects and see what parts resonated with people the most. I concluded that the project needed to strike a balance between the avant-garde &amp; the familiar.</p>
+<p class="svelte-18ngz2l"><strong>Iteration Three:</strong>  This round of prototyping was more informal. I wanted to test out existing music projects and see what parts resonated with people the most. I concluded that the project needed to strike a balance between the avant-garde &amp; the familiar.</p>
 ${validate_component(Video_insert, "Video").$$render($$result, {
             source: "/assets/post-2-video-proto-3-1.mp4"
           }, {}, {})}
 ${validate_component(Video_insert, "Video").$$render($$result, {
             source: "/assets/post-2-video-proto-3-2.mp4"
           }, {}, {})}
-<p class="${"svelte-18ngz2l"}"><strong>Iteration Four:</strong> This is the crystalization of our iterations. It\u2019s an instrument. You <em>have</em> to learn how to use it, practice with it, and how to make the sounds you want to make.</p>
-<iframe width="${"1005"}" height="${"585"}" src="${"https://www.youtube.com/embed/U822oZbD-eI"}" title="${"YouTube video player"}" frameborder="${"0"}" allow="${"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"}" allowfullscreen class="${"svelte-18ngz2l"}"></iframe>
-<p class="${"svelte-18ngz2l"}"><em>\u2728Thanks for reading\u2728</em></p>`;
+<p class="svelte-18ngz2l"><strong>Iteration Four:</strong> This is the crystalization of our iterations. It\u2019s an instrument. You <em>have</em> to learn how to use it, practice with it, and how to make the sounds you want to make.</p>
+<iframe width="1005" height="585" src="https://www.youtube.com/embed/U822oZbD-eI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="svelte-18ngz2l"></iframe>
+<p class="svelte-18ngz2l"><em>\u2728Thanks for reading\u2728</em></p>`;
         }
       })}`;
     });
@@ -5845,9 +5848,9 @@ __export(post_3_varuna_md_exports, {
 var css5, metadata3, title3, thumbnail3, Post_3_varuna;
 var init_post_3_varuna_md = __esm({
   ".svelte-kit/output/server/entries/pages/post-3-varuna.md.js"() {
-    init_index_1c45052d();
-    init_post_container_fd251d68();
-    init_meta_c01f733a();
+    init_index_bbc07b1b();
+    init_post_container_ac8cdf14();
+    init_meta_f5d2df08();
     init_workSwitch_ea5ed9a2();
     css5 = {
       code: "h1.svelte-1l6fj0p{margin:0%;font-size:30px}p.svelte-1l6fj0p,li.svelte-1l6fj0p{overflow-wrap:break-word;max-width:100%;font-size:20px;line-height:40px}a.svelte-1l6fj0p{font-weight:700;color:#99c0ff;text-decoration:none;transition:color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1)}img.svelte-1l6fj0p{max-width:100%;border:1px solid rgba(115, 181, 191, 0.2);border-radius:6px}a.svelte-1l6fj0p:hover{transition:color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);color:#66a0ff}",
@@ -5865,55 +5868,55 @@ var init_post_3_varuna_md = __esm({
         default: () => {
           return `
 	<title>${escape(title3)}</title>
-	<meta name="${"title"}"${add_attribute("content", title3, 0)}>
-	<meta name="${"robots"}" content="${"index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}">
+	<meta name="title"${add_attribute("content", title3, 0)}>
+	<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 	
-	<meta name="${"twitter:card"}" content="${"summary_large_image"}">
-	<meta name="${"twitter:text:title"}"${add_attribute("content", "Ojasvin's Portfolio - " + title3, 0)}>
-	<meta name="${"twitter:card"}" content="${"summary_large_image"}">
-	<meta name="${"twitter:image"}" content="${"https://ojasvin.me/assets/post-3-image-banner.webp"}">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:text:title"${add_attribute("content", "Ojasvin's Portfolio - " + title3, 0)}>
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://ojasvin.me/assets/post-3-image-banner.webp">
 	
-	<meta property="${"og:type"}" content="${"website"}">
-	<meta property="${"og:url"}" content="${"/"}">
-	<meta property="${"og:title"}"${add_attribute("content", title3, 0)}>
-	<meta property="${"og:description"}"${add_attribute("content", "Ojasvin's Portfolio - " + title3, 0)}>
-	<meta property="${"og:image"}" content="${"https://ojasvin.me/assets/post-3-image-banner.webp"}">
-	<meta property="${"og:image:alt"}" content="${"Ojasvin's Portfolio!"}">`;
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="/">
+	<meta property="og:title"${add_attribute("content", title3, 0)}>
+	<meta property="og:description"${add_attribute("content", "Ojasvin's Portfolio - " + title3, 0)}>
+	<meta property="og:image" content="https://ojasvin.me/assets/post-3-image-banner.webp">
+	<meta property="og:image:alt" content="Ojasvin's Portfolio!">`;
         }
       })}
 ${validate_component(Post_container, "PostContainer").$$render($$result, {}, {}, {
         default: () => {
-          return `<h1 class="${"svelte-1l6fj0p"}">${escape(title3)}</h1>
-<p class="${"svelte-1l6fj0p"}"><strong>Intro:</strong> Varuna is a low-cost, beautiful scheduling system for doctors.</p>
-<p class="${"svelte-1l6fj0p"}"><img src="${"/assets/post-3-image-banner.webp"}" alt="${"Varuna Banner"}" class="${"svelte-1l6fj0p"}"></p>
-<p class="${"svelte-1l6fj0p"}"><strong>Context:</strong> This project started in March 2020. When COVID cases were rising in India. My creative partner &amp; I were talking to his mom (a doctor) who was complaining about the medical software she was using.</p>
-<p class="${"svelte-1l6fj0p"}"><strong>Problem:</strong> We spoke with around 15-20 doctors in our immediate network and found that:</p>
-<ol><li class="${"svelte-1l6fj0p"}">They were tired of using their hospital\u2019s <strong>clunky</strong> &amp; ugly digital systems. </li>
-<li class="${"svelte-1l6fj0p"}">Third party applications were <strong>expensive</strong> &amp; irresponsible with data collection.</li>
-<li class="${"svelte-1l6fj0p"}">They wanted something <strong>easy to use, and cheap</strong> to setup.</li></ol>
-<p class="${"svelte-1l6fj0p"}"><strong>Solution:</strong> Varuna, a low-cost, intuitive scheduling system for doctors. Check it out <a href="${"https://docjayalakshmithelapurath.varunadao.com/"}" rel="${"nofollow"}" class="${"svelte-1l6fj0p"}">here</a>.</p>
-<p class="${"svelte-1l6fj0p"}"><img src="${"/assets/post-3-image-product.webp"}" alt="${"Our Product"}" class="${"svelte-1l6fj0p"}"></p>
-<p class="${"svelte-1l6fj0p"}"><strong>Approach:</strong> Our consumers needed a solution immediately. We were in the middle of a crisis. We needed to move fast. So we did. After ideation we just started iterating and making usable prototypes of higher and higher fidelity.</p>
-<p class="${"svelte-1l6fj0p"}"><img src="${"/assets/post-3-image-process.webp"}" alt="${"Our Process"}" class="${"svelte-1l6fj0p"}"></p>
-<p class="${"svelte-1l6fj0p"}">Let me take you through our iterations.</p>
-<p class="${"svelte-1l6fj0p"}"><strong>Iteration One:</strong> In a few weeks, we built our MVP. We had our friends &amp; family try it out. Our main insights after testing were:</p>
-<ol><li class="${"svelte-1l6fj0p"}"><strong>Onboarding</strong> Doctor\u2019s onto the scheduling system <strong>was difficult</strong>.</li>
-<li class="${"svelte-1l6fj0p"}">We were a small team, we needed provide a <strong>pared down, focused experience</strong>.</li>
-<li class="${"svelte-1l6fj0p"}">The <strong>patient facing experience</strong> needed to be <strong>dead simple</strong>.</li></ol>
-<p class="${"svelte-1l6fj0p"}"><img src="${"/assets/post-3-image-sketch.webp"}" alt="${"Our Product"}" class="${"svelte-1l6fj0p"}"></p>
-<p class="${"svelte-1l6fj0p"}"><strong>Iteration Two:</strong> When it came to onboarding Doctors, we decided that an <strong>existing interface was the best interface</strong>. We integrated Varuna into the Doctor\u2019s existing workflow. Doctor\u2019s just had to add \u201CVARUNA\u201D to their Google calendar events, &amp; it would automatically list them as available appointments for patients.</p>
-<p class="${"svelte-1l6fj0p"}"><img src="${"/assets/post-3-image-calendar.webp"}" alt="${"Calendar"}" class="${"svelte-1l6fj0p"}"></p>
-<p class="${"svelte-1l6fj0p"}"><strong>Iteration Three:</strong> We refined the UI. Points of interaction &amp; related information were broken up into modules called <strong>\u201Ccards\u201D</strong>. Each card had a single button to progress towards booking an appointment. We created cards by <strong>focusing on hard data about pain points</strong> in the interface rather than user suggestions.</p>
-<p class="${"svelte-1l6fj0p"}"><img src="${"/assets/post-3-image-card-1.webp"}" alt="${"Cards"}" class="${"svelte-1l6fj0p"}">
-<img src="${"/assets/post-3-image-card-2.webp"}" alt="${"Cards"}" class="${"svelte-1l6fj0p"}"></p>
-<p class="${"svelte-1l6fj0p"}"><strong>Iteration Four:</strong> We needed a way to remind users &amp; doctors about upcoming appointments. So, we started sending <strong>reminders through text messages</strong> with links the meeting. We also spawned a <strong>meeting URLs</strong> with a countdown timer &amp; all relevant information.</p>
-<p class="${"svelte-1l6fj0p"}"><img src="${"/assets/post-3-image-card-3.webp"}" alt="${"Cards"}" class="${"svelte-1l6fj0p"}"></p>
-<p class="${"svelte-1l6fj0p"}"><strong>Conclusion:</strong> We successfully designed &amp; deployed a web app that allowed doctor\u2019s to schedule &amp; conduct appointments online. Through live user feedback &amp; data, we rapidly added necesary features &amp; refined the interface. <strong>In a few weeks</strong>, we were able to provide <strong>half a dozen doctors &amp; over 50 patients</strong> in Mumbai with the ability to give &amp; receive help through the COVID pandemic.</p>
-<p class="${"svelte-1l6fj0p"}"><strong>Lessons:</strong> This project was very formative for me. It has very much influenced so much of how I approach design today. Here are some high-level take-aways:</p>
-<ol><li class="${"svelte-1l6fj0p"}">Keep your <strong>design simple</strong>. Helps you make complex projects.</li>
-<li class="${"svelte-1l6fj0p"}">Pay attention to the <strong>data</strong>. User opinion should follow data, not the other way around.</li>
-<li class="${"svelte-1l6fj0p"}"><strong>Use existing interfaces</strong> when you can. The user will be more comfortable in familiarity.</li></ol>
-<p class="${"svelte-1l6fj0p"}"><em>\u2728Thanks for reading\u2728</em></p>`;
+          return `<h1 class="svelte-1l6fj0p">${escape(title3)}</h1>
+<p class="svelte-1l6fj0p"><strong>Intro:</strong> Varuna is a low-cost, beautiful scheduling system for doctors.</p>
+<p class="svelte-1l6fj0p"><img src="/assets/post-3-image-banner.webp" alt="Varuna Banner" class="svelte-1l6fj0p"></p>
+<p class="svelte-1l6fj0p"><strong>Context:</strong> This project started in March 2020. When COVID cases were rising in India. My creative partner &amp; I were talking to his mom (a doctor) who was complaining about the medical software she was using.</p>
+<p class="svelte-1l6fj0p"><strong>Problem:</strong> We spoke with around 15-20 doctors in our immediate network and found that:</p>
+<ol><li class="svelte-1l6fj0p">They were tired of using their hospital\u2019s <strong>clunky</strong> &amp; ugly digital systems. </li>
+<li class="svelte-1l6fj0p">Third party applications were <strong>expensive</strong> &amp; irresponsible with data collection.</li>
+<li class="svelte-1l6fj0p">They wanted something <strong>easy to use, and cheap</strong> to setup.</li></ol>
+<p class="svelte-1l6fj0p"><strong>Solution:</strong> Varuna, a low-cost, intuitive scheduling system for doctors. Check it out <a href="https://docjayalakshmithelapurath.varunadao.com/" rel="nofollow" class="svelte-1l6fj0p">here</a>.</p>
+<p class="svelte-1l6fj0p"><img src="/assets/post-3-image-product.webp" alt="Our Product" class="svelte-1l6fj0p"></p>
+<p class="svelte-1l6fj0p"><strong>Approach:</strong> Our consumers needed a solution immediately. We were in the middle of a crisis. We needed to move fast. So we did. After ideation we just started iterating and making usable prototypes of higher and higher fidelity.</p>
+<p class="svelte-1l6fj0p"><img src="/assets/post-3-image-process.webp" alt="Our Process" class="svelte-1l6fj0p"></p>
+<p class="svelte-1l6fj0p">Let me take you through our iterations.</p>
+<p class="svelte-1l6fj0p"><strong>Iteration One:</strong> In a few weeks, we built our MVP. We had our friends &amp; family try it out. Our main insights after testing were:</p>
+<ol><li class="svelte-1l6fj0p"><strong>Onboarding</strong> Doctor\u2019s onto the scheduling system <strong>was difficult</strong>.</li>
+<li class="svelte-1l6fj0p">We were a small team, we needed provide a <strong>pared down, focused experience</strong>.</li>
+<li class="svelte-1l6fj0p">The <strong>patient facing experience</strong> needed to be <strong>dead simple</strong>.</li></ol>
+<p class="svelte-1l6fj0p"><img src="/assets/post-3-image-sketch.webp" alt="Our Product" class="svelte-1l6fj0p"></p>
+<p class="svelte-1l6fj0p"><strong>Iteration Two:</strong> When it came to onboarding Doctors, we decided that an <strong>existing interface was the best interface</strong>. We integrated Varuna into the Doctor\u2019s existing workflow. Doctor\u2019s just had to add \u201CVARUNA\u201D to their Google calendar events, &amp; it would automatically list them as available appointments for patients.</p>
+<p class="svelte-1l6fj0p"><img src="/assets/post-3-image-calendar.webp" alt="Calendar" class="svelte-1l6fj0p"></p>
+<p class="svelte-1l6fj0p"><strong>Iteration Three:</strong> We refined the UI. Points of interaction &amp; related information were broken up into modules called <strong>\u201Ccards\u201D</strong>. Each card had a single button to progress towards booking an appointment. We created cards by <strong>focusing on hard data about pain points</strong> in the interface rather than user suggestions.</p>
+<p class="svelte-1l6fj0p"><img src="/assets/post-3-image-card-1.webp" alt="Cards" class="svelte-1l6fj0p">
+<img src="/assets/post-3-image-card-2.webp" alt="Cards" class="svelte-1l6fj0p"></p>
+<p class="svelte-1l6fj0p"><strong>Iteration Four:</strong> We needed a way to remind users &amp; doctors about upcoming appointments. So, we started sending <strong>reminders through text messages</strong> with links the meeting. We also spawned a <strong>meeting URLs</strong> with a countdown timer &amp; all relevant information.</p>
+<p class="svelte-1l6fj0p"><img src="/assets/post-3-image-card-3.webp" alt="Cards" class="svelte-1l6fj0p"></p>
+<p class="svelte-1l6fj0p"><strong>Conclusion:</strong> We successfully designed &amp; deployed a web app that allowed doctor\u2019s to schedule &amp; conduct appointments online. Through live user feedback &amp; data, we rapidly added necesary features &amp; refined the interface. <strong>In a few weeks</strong>, we were able to provide <strong>half a dozen doctors &amp; over 50 patients</strong> in Mumbai with the ability to give &amp; receive help through the COVID pandemic.</p>
+<p class="svelte-1l6fj0p"><strong>Lessons:</strong> This project was very formative for me. It has very much influenced so much of how I approach design today. Here are some high-level take-aways:</p>
+<ol><li class="svelte-1l6fj0p">Keep your <strong>design simple</strong>. Helps you make complex projects.</li>
+<li class="svelte-1l6fj0p">Pay attention to the <strong>data</strong>. User opinion should follow data, not the other way around.</li>
+<li class="svelte-1l6fj0p"><strong>Use existing interfaces</strong> when you can. The user will be more comfortable in familiarity.</li></ol>
+<p class="svelte-1l6fj0p"><em>\u2728Thanks for reading\u2728</em></p>`;
         }
       })}`;
     });
@@ -5929,10 +5932,10 @@ __export(post_4_duet_md_exports, {
 var css6, metadata4, title4, thumbnail4, Post_4_duet;
 var init_post_4_duet_md = __esm({
   ".svelte-kit/output/server/entries/pages/post-4-duet.md.js"() {
-    init_index_1c45052d();
-    init_post_container_fd251d68();
-    init_meta_c01f733a();
-    init_video_insert_9d1f2164();
+    init_index_bbc07b1b();
+    init_post_container_ac8cdf14();
+    init_meta_f5d2df08();
+    init_video_insert_bb35ee4b();
     init_workSwitch_ea5ed9a2();
     css6 = {
       code: "h1.svelte-fe0wq3{margin:0%;font-size:30px}p.svelte-fe0wq3{overflow-wrap:break-word;max-width:100%;font-size:20px;line-height:40px}img.svelte-fe0wq3{max-width:100%;border:1px solid rgba(133, 71, 178, 0.2);border-radius:6px}",
@@ -5949,50 +5952,50 @@ var init_post_4_duet_md = __esm({
       return `${validate_component(Meta, "Meta").$$render($$result, {}, {}, {
         default: () => {
           return `<title>${escape(title4)}</title>
-	<meta name="${"title"}"${add_attribute("content", title4, 0)}>
-	<meta name="${"robots"}" content="${"index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}">
+	<meta name="title"${add_attribute("content", title4, 0)}>
+	<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 	
-	<meta name="${"twitter:card"}" content="${"summary_large_image"}">
-	<meta name="${"twitter:text:title"}"${add_attribute("content", "Ojasvin's Portfolio - " + title4, 0)}>
-	<meta name="${"twitter:card"}" content="${"summary_large_image"}">
-	<meta name="${"twitter:image"}" content="${"https://ojasvin.me/assets/post-4-image-banner.webp"}">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:text:title"${add_attribute("content", "Ojasvin's Portfolio - " + title4, 0)}>
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://ojasvin.me/assets/post-4-image-banner.webp">
 	
-	<meta property="${"og:type"}" content="${"website"}">
-	<meta property="${"og:url"}" content="${"/"}">
-	<meta property="${"og:title"}"${add_attribute("content", title4, 0)}>
-	<meta property="${"og:description"}"${add_attribute("content", "Ojasvin's Portfolio - " + title4, 0)}>
-	<meta property="${"og:image"}" content="${"https://ojasvin.me/assets/post-4-image-banner.webp"}">
-	<meta property="${"og:image:alt"}" content="${"Ojasvin's Portfolio!"}">`;
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="/">
+	<meta property="og:title"${add_attribute("content", title4, 0)}>
+	<meta property="og:description"${add_attribute("content", "Ojasvin's Portfolio - " + title4, 0)}>
+	<meta property="og:image" content="https://ojasvin.me/assets/post-4-image-banner.webp">
+	<meta property="og:image:alt" content="Ojasvin's Portfolio!">`;
         }
       })}
 ${validate_component(Post_container, "PostContainer").$$render($$result, {}, {}, {
         default: () => {
-          return `<h1 class="${"svelte-fe0wq3"}">${escape(title4)}</h1>
-<p class="${"svelte-fe0wq3"}"><strong>Intro:</strong> DUET is a \u2018Social Sonic Interface\u2019 \u2014 a collaborative space where two isolated participants work together to create an audio-visual experience through gesture-based interaction.</p>
-<p class="${"svelte-fe0wq3"}"><img src="${"/assets/post-4-image-banner.webp"}" alt="${escape(title4) + " Banner"}" class="${"svelte-fe0wq3"}"></p>
-<p class="${"svelte-fe0wq3"}"><img src="${"/assets/post-4-image-example.webp"}" alt="${escape(title4) + " Example"}" class="${"svelte-fe0wq3"}">
-<img src="${"/assets/post-4-image-girl.webp"}" alt="${escape(title4) + " Example 2"}" class="${"svelte-fe0wq3"}">
-<img src="${"/assets/post-4-image-dude.webp"}" alt="${escape(title4) + " Example 3"}" class="${"svelte-fe0wq3"}"></p>
-<p class="${"svelte-fe0wq3"}"><strong>Interface:</strong> After iterating through prototypes the digital team landed on a solution that was intuitive &amp; magical. The team decided to have a gesture-interface as the core interaction point. Users could then create beautiful melodies simply by waving their hands around a gesture-sensor like a conductor.</p>
-<p class="${"svelte-fe0wq3"}"><img src="${"/assets/post-4-image-interface.webp"}" alt="${"Interface Explaination"}" class="${"svelte-fe0wq3"}"></p>
-<p class="${"svelte-fe0wq3"}">Our first prototype with gesture based control with a motion detector:</p>
+          return `<h1 class="svelte-fe0wq3">${escape(title4)}</h1>
+<p class="svelte-fe0wq3"><strong>Intro:</strong> DUET is a \u2018Social Sonic Interface\u2019 \u2014 a collaborative space where two isolated participants work together to create an audio-visual experience through gesture-based interaction.</p>
+<p class="svelte-fe0wq3"><img src="/assets/post-4-image-banner.webp" alt="${escape(title4, true) + " Banner"}" class="svelte-fe0wq3"></p>
+<p class="svelte-fe0wq3"><img src="/assets/post-4-image-example.webp" alt="${escape(title4, true) + " Example"}" class="svelte-fe0wq3">
+<img src="/assets/post-4-image-girl.webp" alt="${escape(title4, true) + " Example 2"}" class="svelte-fe0wq3">
+<img src="/assets/post-4-image-dude.webp" alt="${escape(title4, true) + " Example 3"}" class="svelte-fe0wq3"></p>
+<p class="svelte-fe0wq3"><strong>Interface:</strong> After iterating through prototypes the digital team landed on a solution that was intuitive &amp; magical. The team decided to have a gesture-interface as the core interaction point. Users could then create beautiful melodies simply by waving their hands around a gesture-sensor like a conductor.</p>
+<p class="svelte-fe0wq3"><img src="/assets/post-4-image-interface.webp" alt="Interface Explaination" class="svelte-fe0wq3"></p>
+<p class="svelte-fe0wq3">Our first prototype with gesture based control with a motion detector:</p>
 ${validate_component(Video_insert, "Video").$$render($$result, {
             source: "/assets/post-4-video-proto-1.mp4"
           }, {}, {})}
-<p class="${"svelte-fe0wq3"}">Our team testing out the collaborative aspect of our project:</p>
+<p class="svelte-fe0wq3">Our team testing out the collaborative aspect of our project:</p>
 ${validate_component(Video_insert, "Video").$$render($$result, {
             source: "/assets/post-4-video-proto-2.mp4"
           }, {}, {})}
-<p class="${"svelte-fe0wq3"}">Everything working together in the fabricated space:</p>
+<p class="svelte-fe0wq3">Everything working together in the fabricated space:</p>
 ${validate_component(Video_insert, "Video").$$render($$result, {
             source: "/assets/post-4-video-proto-3.mp4"
           }, {}, {})}
-<p class="${"svelte-fe0wq3"}"><strong>Environment:</strong> The team also engineered &amp; decorated a sturdy space the simultaneously took into account user needs such as comfort, accessibility, etc while hiding the tech effectively. The space was built to decontextualise the user from their usual experience of environments.</p>
-<p class="${"svelte-fe0wq3"}"><strong>Leading a Team:</strong> For a project about exploring themes of collaboration, the team involved in making it experienced some issues in that department. The main issues were clashes of ego &amp; some miscommunication. As the project manager it was my job to remedy these conflicts.
+<p class="svelte-fe0wq3"><strong>Environment:</strong> The team also engineered &amp; decorated a sturdy space the simultaneously took into account user needs such as comfort, accessibility, etc while hiding the tech effectively. The space was built to decontextualise the user from their usual experience of environments.</p>
+<p class="svelte-fe0wq3"><strong>Leading a Team:</strong> For a project about exploring themes of collaboration, the team involved in making it experienced some issues in that department. The main issues were clashes of ego &amp; some miscommunication. As the project manager it was my job to remedy these conflicts.
 I fostered effective communication between team members. Effective communication lead to more empathy. Empathy lead to people puttinh aside their egos to work towards the final goal.</p>
-<p class="${"svelte-fe0wq3"}"><strong>Conclusion:</strong> The project took us 3 months to finish. It was open to the public as part of a thesis exhibition. We were able to create an intuitive &amp; gratifying experience for more than 50 people who came to see our project. Here\u2019s a video of the event:</p>
+<p class="svelte-fe0wq3"><strong>Conclusion:</strong> The project took us 3 months to finish. It was open to the public as part of a thesis exhibition. We were able to create an intuitive &amp; gratifying experience for more than 50 people who came to see our project. Here\u2019s a video of the event:</p>
 ${validate_component(Video_insert, "Video").$$render($$result, { source: "/assets/post-4-video-final.mp4" }, {}, {})}
-<p class="${"svelte-fe0wq3"}"><em>\u2728Thanks for reading\u2728</em></p>`;
+<p class="svelte-fe0wq3"><em>\u2728Thanks for reading\u2728</em></p>`;
         }
       })}`;
     });
@@ -6008,8 +6011,8 @@ __export(post_5_generative_md_exports, {
 var css7, metadata5, title5, thumbnail5, Post_5_generative;
 var init_post_5_generative_md = __esm({
   ".svelte-kit/output/server/entries/pages/post-5-generative.md.js"() {
-    init_index_1c45052d();
-    init_post_container_fd251d68();
+    init_index_bbc07b1b();
+    init_post_container_ac8cdf14();
     init_workSwitch_ea5ed9a2();
     css7 = {
       code: "h1.svelte-vqpe1e{margin-top:0%;font-size:30px}p.svelte-vqpe1e{overflow-wrap:break-word;max-width:100%;font-size:20px;line-height:40px}",
@@ -6024,10 +6027,10 @@ var init_post_5_generative_md = __esm({
       $$result.css.add(css7);
       return `${validate_component(Post_container, "PostContainer").$$render($$result, {}, {}, {
         default: () => {
-          return `<h1 class="${"svelte-vqpe1e"}">${escape(title5)}</h1>
-<p class="${"svelte-vqpe1e"}"><strong>Intro: </strong>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\u2019s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-<p class="${"svelte-vqpe1e"}"><strong>Problem: </strong>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-<p class="${"svelte-vqpe1e"}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae nisi vitae lectus dapibus imperdiet. Maecenas mollis pellentesque urna, ut eleifend dui mattis rutrum. Nam risus nunc, ornare in pellentesque in, sagittis in quam. Maecenas imperdiet tellus nec nulla maximus, et luctus enim luctus. Sed ac lacus sem. Donec porttitor eros tortor, ut accumsan ligula semper non. Aliquam a sapien venenatis, suscipit nulla non, mollis eros. Donec ante metus, auctor vel auctor eu, fringilla vitae sapien. Praesent lacus lacus, efficitur nec euismod quis, sagittis sit amet metus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;</p>`;
+          return `<h1 class="svelte-vqpe1e">${escape(title5)}</h1>
+<p class="svelte-vqpe1e"><strong>Intro: </strong>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\u2019s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+<p class="svelte-vqpe1e"><strong>Problem: </strong>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<p class="svelte-vqpe1e">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae nisi vitae lectus dapibus imperdiet. Maecenas mollis pellentesque urna, ut eleifend dui mattis rutrum. Nam risus nunc, ornare in pellentesque in, sagittis in quam. Maecenas imperdiet tellus nec nulla maximus, et luctus enim luctus. Sed ac lacus sem. Donec porttitor eros tortor, ut accumsan ligula semper non. Aliquam a sapien venenatis, suscipit nulla non, mollis eros. Donec ante metus, auctor vel auctor eu, fringilla vitae sapien. Praesent lacus lacus, efficitur nec euismod quis, sagittis sit amet metus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;</p>`;
         }
       })}`;
     });
@@ -6043,9 +6046,9 @@ __export(post_6_this_site_md_exports, {
 var css8, metadata6, title6, thumbnail6, Post_6_this_site;
 var init_post_6_this_site_md = __esm({
   ".svelte-kit/output/server/entries/pages/post-6-this-site.md.js"() {
-    init_index_1c45052d();
-    init_post_container_fd251d68();
-    init_meta_c01f733a();
+    init_index_bbc07b1b();
+    init_post_container_ac8cdf14();
+    init_meta_f5d2df08();
     init_workSwitch_ea5ed9a2();
     css8 = {
       code: "h1.svelte-1c7xbkh{margin:0%;font-size:30px}p.svelte-1c7xbkh{overflow-wrap:break-word;max-width:100%;font-size:20px;line-height:40px}img.svelte-1c7xbkh{max-width:100%;border:1px solid rgba(128, 178, 254, 0.2);border-radius:6px}",
@@ -6062,35 +6065,105 @@ var init_post_6_this_site_md = __esm({
       return `${validate_component(Meta, "Meta").$$render($$result, {}, {}, {
         default: () => {
           return `<title>${escape(title6)}</title>
-	<meta name="${"title"}"${add_attribute("content", title6, 0)}>
-	<meta name="${"robots"}" content="${"index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}">
+	<meta name="title"${add_attribute("content", title6, 0)}>
+	<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 	
-	<meta name="${"twitter:card"}" content="${"summary_large_image"}">
-	<meta name="${"twitter:text:title"}"${add_attribute("content", "Ojasvin's Portfolio - " + title6, 0)}>
-	<meta name="${"twitter:card"}" content="${"summary_large_image"}">
-	<meta name="${"twitter:image"}" content="${"https://ojasvin.me/assets/site-banner.webp"}">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:text:title"${add_attribute("content", "Ojasvin's Portfolio - " + title6, 0)}>
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://ojasvin.me/assets/site-banner.webp">
 	
-	<meta property="${"og:type"}" content="${"website"}">
-	<meta property="${"og:url"}" content="${"/"}">
-	<meta property="${"og:title"}"${add_attribute("content", title6, 0)}>
-	<meta property="${"og:description"}"${add_attribute("content", "Ojasvin's Portfolio - " + title6, 0)}>
-	<meta property="${"og:image"}" content="${"https://ojasvin.me/assets/site-banner.webp"}">
-	<meta property="${"og:image:alt"}" content="${"Ojasvin's Portfolio!"}">`;
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="/">
+	<meta property="og:title"${add_attribute("content", title6, 0)}>
+	<meta property="og:description"${add_attribute("content", "Ojasvin's Portfolio - " + title6, 0)}>
+	<meta property="og:image" content="https://ojasvin.me/assets/site-banner.webp">
+	<meta property="og:image:alt" content="Ojasvin's Portfolio!">`;
         }
       })}
 ${validate_component(Post_container, "PostContainer").$$render($$result, {}, {}, {
         default: () => {
-          return `<h1 class="${"svelte-1c7xbkh"}">${escape(title6)}</h1>
-<p class="${"svelte-1c7xbkh"}"><strong>Intro:</strong> I designed &amp; built this site over 2.5 weeks. I designed it using Figma. I built it with SvelteKit.</p>
-<p class="${"svelte-1c7xbkh"}"><img src="${"/assets/site-banner.webp"}" alt="${escape(title6) + " Banner"}" class="${"svelte-1c7xbkh"}"></p>
-<p class="${"svelte-1c7xbkh"}">My Figma iterations:</p>
-<p class="${"svelte-1c7xbkh"}"><img src="${"/assets/post-6-image-iterations.webp"}" alt="${"Iterations"}" class="${"svelte-1c7xbkh"}">
-<img src="${"/assets/post-6-video-iterations.gif"}" alt="${"Iterations"}" class="${"svelte-1c7xbkh"}">
-<img src="${"/assets/post-1-image-banner.webp"}" alt="${"Feather Banner"}" class="${"svelte-1c7xbkh"}">
-<img src="${"/assets/post-2-image-banner.webp"}" alt="${"Bulbul Banner"}" class="${"svelte-1c7xbkh"}">
-<img src="${"/assets/post-3-image-banner.webp"}" alt="${"Varuna Banner"}" class="${"svelte-1c7xbkh"}">
-<img src="${"/assets/post-4-image-banner.webp"}" alt="${"DUET Banner"}" class="${"svelte-1c7xbkh"}"></p>
-<p class="${"svelte-1c7xbkh"}"><em>\u2728Thanks for reading\u2728</em></p>`;
+          return `<h1 class="svelte-1c7xbkh">${escape(title6)}</h1>
+<p class="svelte-1c7xbkh"><strong>Intro:</strong> I designed &amp; built this site over 2.5 weeks. I designed it using Figma. I built it with SvelteKit.</p>
+<p class="svelte-1c7xbkh"><img src="/assets/site-banner.webp" alt="${escape(title6, true) + " Banner"}" class="svelte-1c7xbkh"></p>
+<p class="svelte-1c7xbkh">My Figma iterations:</p>
+<p class="svelte-1c7xbkh"><img src="/assets/post-6-image-iterations.webp" alt="Iterations" class="svelte-1c7xbkh">
+<img src="/assets/post-6-video-iterations.gif" alt="Iterations" class="svelte-1c7xbkh">
+<img src="/assets/post-1-image-banner.webp" alt="Feather Banner" class="svelte-1c7xbkh">
+<img src="/assets/post-2-image-banner.webp" alt="Bulbul Banner" class="svelte-1c7xbkh">
+<img src="/assets/post-3-image-banner.webp" alt="Varuna Banner" class="svelte-1c7xbkh">
+<img src="/assets/post-4-image-banner.webp" alt="DUET Banner" class="svelte-1c7xbkh"></p>
+<p class="svelte-1c7xbkh"><em>\u2728Thanks for reading\u2728</em></p>`;
+        }
+      })}`;
+    });
+  }
+});
+
+// .svelte-kit/output/server/entries/pages/post-7-universal.md.js
+var post_7_universal_md_exports = {};
+__export(post_7_universal_md_exports, {
+  default: () => Post_7_universal,
+  metadata: () => metadata7
+});
+var css9, metadata7, title7, thumbnail7, Post_7_universal;
+var init_post_7_universal_md = __esm({
+  ".svelte-kit/output/server/entries/pages/post-7-universal.md.js"() {
+    init_index_bbc07b1b();
+    init_post_container_ac8cdf14();
+    init_meta_f5d2df08();
+    init_workSwitch_ea5ed9a2();
+    css9 = {
+      code: "h1.svelte-1ubih2k{margin:0%;font-size:30px}p.svelte-1ubih2k,li.svelte-1ubih2k{overflow-wrap:break-word;max-width:100%;font-size:20px;line-height:40px}img.svelte-1ubih2k{max-width:100%;border:1px solid rgba(44, 44, 128, 0.2);border-radius:6px}",
+      map: null
+    };
+    metadata7 = {
+      "title": "UNIVERSAL PORTAL",
+      "thumbnail": "/assets/sticker-gen.svg"
+    };
+    ({ title: title7, thumbnail: thumbnail7 } = metadata7);
+    Post_7_universal = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      workSwitch.turnOff();
+      $$result.css.add(css9);
+      return `${validate_component(Meta, "Meta").$$render($$result, {}, {}, {
+        default: () => {
+          return `<title>${escape(title7)}</title>
+	<meta name="title"${add_attribute("content", title7, 0)}>
+	<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+	
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:text:title"${add_attribute("content", "Ojasvin's Portfolio - " + title7, 0)}>
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://ojasvin.me/assets/post-1-image-banner.webp">
+	
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="/">
+	<meta property="og:title"${add_attribute("content", title7, 0)}>
+	<meta property="og:description"${add_attribute("content", "Ojasvin's Portfolio - " + title7, 0)}>
+	<meta property="og:image" content="https://ojasvin.me/assets/post-1-image-banner.webp">
+	<meta property="og:image:alt" content="Ojasvin's Portfolio!">`;
+        }
+      })}
+${validate_component(Post_container, "PostContainer").$$render($$result, {}, {}, {
+        default: () => {
+          return `<h1 class="svelte-1ubih2k">${escape(title7)}</h1>
+<p class="svelte-1ubih2k"><strong>Intro:</strong> Government dashboards \u2013 notoriously complex, often bureaucratic, and a pain for both designers and developers. We\u2019ve all been there, tangled in the weeds of repetitive login flows, clunky forms, and support components. But what if there was a better way? Enter: The Universal portal, a modular design system built to revolutionize government UX.</p>
+<p class="svelte-1ubih2k"><img src="/assets/post-7-video-first.gif" alt="${escape(title7, true) + " Banner"}" class="svelte-1ubih2k"></p>
+<p class="svelte-1ubih2k"><strong>The spark:</strong> It all started with two frustrated designers facing the same task: building dashboards for different government projects. We saw the endless repetition, the wasted time, and knew there had to be a better way. With our manager\u2019s blessing, we embarked on a mission to create a universal toolkit, a shared language for government UX.</p>
+<p class="svelte-1ubih2k"><img src="/assets/post-7-image-flow-1.png" alt="${escape(title7, true) + " Banner"}" class="svelte-1ubih2k"></p>
+<p class="svelte-1ubih2k"><img src="/assets/post-7-image-flow-2.png" alt="${escape(title7, true) + " Banner"}" class="svelte-1ubih2k"></p>
+<p class="svelte-1ubih2k"><strong>Building blocks:</strong> Built on Figma\u2019s variable modes for effortless theming, our design system was pretty comprehensive. We created variants for every component, at every state. Collaboration with the dev team was key, translating designs into reality through an internal AI tool that transforms SVGs into React components with SASS styles. This seamless workflow empowers developers to tap into the system, adding components with ease.</p>
+<p class="svelte-1ubih2k"><img src="/assets/post-7-image-ds-colors.png" alt="Card" class="svelte-1ubih2k"></p>
+<p class="svelte-1ubih2k"><img src="/assets/post-7-image-ds-buttons.png" alt="Card" class="svelte-1ubih2k"></p>
+<p class="svelte-1ubih2k"><img src="/assets/post-7-image-ds-components.png" alt="Card" class="svelte-1ubih2k"></p>
+<p class="svelte-1ubih2k"><strong>Our process:</strong> Our agile approach utilizes rotating developers based on availability, ensuring continuous progress without bottlenecks. To guarantee seamless integration, we developed a robust testing suite, making each component a lego-like block ready for any developer to play with.</p>
+<p class="svelte-1ubih2k"><img src="/assets/post-7-video-lego.gif" alt="Flow" class="svelte-1ubih2k"></p>
+<p class="svelte-1ubih2k"><strong>Mix &amp; Match:</strong> Components mix and match to effortlessly adapt to diverse needs, validated through rigorous testing with real users. To ensure this modular magic extends beyond individual designers, we tested ease of use with colleagues working on parallel projects. The result? Minimal onboarding and a system that seamlessly scales with any team.</p>
+<p class="svelte-1ubih2k"><strong>Conclusion:</strong> We accomplished the following:</p>
+<ol><li class="svelte-1ubih2k"><em>Live impact:</em> 5+ client projects powered, 2 delivered by yours truly.</li>
+<li class="svelte-1ubih2k"><em>Proposal magnet:</em> 15 pitches featuring the prototypes created with our system, showcasing its value.</li>
+<li class="svelte-1ubih2k"><em>Time saved:</em> Design speed boost of 2+ weeks, measured and celebrated.</li></ol>
+<p class="svelte-1ubih2k"><em>\u2728Thanks for reading\u2728</em></p>`;
         }
       })}`;
     });
@@ -6103,10 +6176,10 @@ __export(layout_svelte_exports, {
   default: () => _layout,
   load: () => load
 });
-var aboutSwitch, css$4, Nav, css$3, Work, css$2, About, css$1, Avatar, css9, allPosts, body, load, _layout;
+var aboutSwitch, css$4, Nav, css$3, Work, css$2, About, css$1, Avatar, css10, allPosts, body, load, _layout;
 var init_layout_svelte = __esm({
   ".svelte-kit/output/server/entries/pages/__layout.svelte.js"() {
-    init_index_1c45052d();
+    init_index_bbc07b1b();
     init_svelte_fsm();
     init_workSwitch_ea5ed9a2();
     aboutSwitch = svelte_fsm_default("off", {
@@ -6131,15 +6204,15 @@ var init_layout_svelte = __esm({
       $$result.css.add(css$4);
       $$unsubscribe_workSwitch();
       $$unsubscribe_aboutSwitch();
-      return `<main class="${"svelte-eyunxd"}"><div id="${"nav-container"}" class="${"svelte-eyunxd"}"><div class="${"flex svelte-eyunxd"}"><div class="${"spacer-nav-left svelte-eyunxd"}"></div>
-			<div id="${"work"}" class="${["text link svelte-eyunxd", $workSwitch === "on" ? "selected" : ""].join(" ").trim()}">Work
+      return `<main class="svelte-eyunxd"><div id="nav-container" class="svelte-eyunxd"><div class="flex svelte-eyunxd"><div class="spacer-nav-left svelte-eyunxd"></div>
+			<div id="work" class="${["text link svelte-eyunxd", $workSwitch === "on" ? "selected" : ""].join(" ").trim()}">Work
 			</div>
-			<div class="${"spacer-nav-between svelte-eyunxd"}"></div>
+			<div class="spacer-nav-between svelte-eyunxd"></div>
 			<div class="${["text link svelte-eyunxd", $aboutSwitch === "on" ? "selected" : ""].join(" ").trim()}">About
 			</div>
-			<div class="${"spacer-nav-between svelte-eyunxd"}"></div>
-			<div class="${"icon grow link svelte-eyunxd"}"><img src="${"/assets/email.svg"}" alt="${"Email me"}" class="${"svelte-eyunxd"}"></div>
-			<div class="${"spacer-nav-right svelte-eyunxd"}"></div></div></div>
+			<div class="spacer-nav-between svelte-eyunxd"></div>
+			<div class="icon grow link svelte-eyunxd"><img src="/assets/email.svg" alt="Email me" class="svelte-eyunxd"></div>
+			<div class="spacer-nav-right svelte-eyunxd"></div></div></div>
 </main>`;
     });
     css$3 = {
@@ -6155,12 +6228,12 @@ var init_layout_svelte = __esm({
       $$result.css.add(css$3);
       $$unsubscribe_workSwitch();
       return `${$workSwitch === "on" ? `
-	<div id="${"work-container"}" class="${"svelte-1ki12fb"}"><div class="${"sizing absolute"}"><a sveltekit:prefetch${add_attribute("href", `/${posts[0].path.replace(".md", "")}`, 0)}><img class="${"p-one saturate svelte-1ki12fb"}"${add_attribute("src", `${posts[0].metadata.thumbnail}`, 0)}${add_attribute("alt", posts[0].metadata.title, 0)}></a></div>
-		<div class="${"sizing absolute"}"><a sveltekit:prefetch${add_attribute("href", `/${posts[1].path.replace(".md", "")}`, 0)}><img class="${"p-two saturate svelte-1ki12fb"}"${add_attribute("src", `${posts[1].metadata.thumbnail}`, 0)}${add_attribute("alt", posts[1].metadata.title, 0)}></a></div>
-		<div class="${"sizing absolute"}"><a sveltekit:prefetch${add_attribute("href", `/${posts[2].path.replace(".md", "")}`, 0)}><img class="${"p-three saturate svelte-1ki12fb"}"${add_attribute("src", `${posts[2].metadata.thumbnail}`, 0)}${add_attribute("alt", posts[2].metadata.title, 0)}></a></div>
-		<div class="${"sizing absolute"}"><a sveltekit:prefetch${add_attribute("href", `/${posts[3].path.replace(".md", "")}`, 0)}><img class="${"p-four saturate svelte-1ki12fb"}"${add_attribute("src", `${posts[3].metadata.thumbnail}`, 0)}${add_attribute("alt", posts[3].metadata.title, 0)}></a></div>
-		<div class="${"sizing fixed absolute"}"><a sveltekit:prefetch target="${"_blank"}" href="${"http://sketches2020.compform.net/users/fY4guEMRJi3SpJHrM"}"><img class="${"p-five saturate svelte-1ki12fb"}"${add_attribute("src", `${posts[4].metadata.thumbnail}`, 0)}${add_attribute("alt", posts[4].metadata.title, 0)}></a></div>
-		<div class="${"sizing fixed absolute"}"><a sveltekit:prefetch${add_attribute("href", `/${posts[5].path.replace(".md", "")}`, 0)}><img class="${"p-six saturate svelte-1ki12fb"}"${add_attribute("src", `${posts[5].metadata.thumbnail}`, 0)}${add_attribute("alt", posts[5].metadata.title, 0)}></a></div></div>` : `${$workSwitch === "off" ? `<div></div>` : ``}`}`;
+	<div id="work-container" class="svelte-1ki12fb"><div class="sizing absolute"><a sveltekit:prefetch${add_attribute("href", `/${posts[0].path.replace(".md", "")}`, 0)}><img class="p-one saturate svelte-1ki12fb"${add_attribute("src", `${posts[0].metadata.thumbnail}`, 0)}${add_attribute("alt", posts[0].metadata.title, 0)}></a></div>
+		<div class="sizing absolute"><a sveltekit:prefetch${add_attribute("href", `/${posts[1].path.replace(".md", "")}`, 0)}><img class="p-two saturate svelte-1ki12fb"${add_attribute("src", `${posts[1].metadata.thumbnail}`, 0)}${add_attribute("alt", posts[1].metadata.title, 0)}></a></div>
+		<div class="sizing absolute"><a sveltekit:prefetch${add_attribute("href", `/${posts[2].path.replace(".md", "")}`, 0)}><img class="p-three saturate svelte-1ki12fb"${add_attribute("src", `${posts[2].metadata.thumbnail}`, 0)}${add_attribute("alt", posts[2].metadata.title, 0)}></a></div>
+		<div class="sizing absolute"><a sveltekit:prefetch${add_attribute("href", `/${posts[3].path.replace(".md", "")}`, 0)}><img class="p-four saturate svelte-1ki12fb"${add_attribute("src", `${posts[3].metadata.thumbnail}`, 0)}${add_attribute("alt", posts[3].metadata.title, 0)}></a></div>
+		<div class="sizing fixed absolute"><a sveltekit:prefetch${add_attribute("href", `/${posts[6].path.replace(".md", "")}`, 0)}><img class="p-five saturate svelte-1ki12fb"${add_attribute("src", `${posts[4].metadata.thumbnail}`, 0)}${add_attribute("alt", posts[4].metadata.title, 0)}></a></div>
+		<div class="sizing fixed absolute"><a sveltekit:prefetch${add_attribute("href", `/${posts[5].path.replace(".md", "")}`, 0)}><img class="p-six saturate svelte-1ki12fb"${add_attribute("src", `${posts[5].metadata.thumbnail}`, 0)}${add_attribute("alt", posts[5].metadata.title, 0)}></a></div></div>` : `${$workSwitch === "off" ? `<div></div>` : ``}`}`;
     });
     css$2 = {
       code: '.container.svelte-1ats1rr.svelte-1ats1rr{position:sticky;bottom:0%;left:0%;z-index:4}.below.svelte-1ats1rr.svelte-1ats1rr{width:100vw;height:100vh;background-color:rgba(87, 151, 255, 0.5490196078);display:grid;place-items:center}.below.svelte-1ats1rr main.svelte-1ats1rr{position:relative;width:clamp(300px, 80%, 39.5833333333vw);height:15.2777777778vw;min-height:220px;border-radius:0.4166666667vw;background-color:#f7faff}.below.svelte-1ats1rr main .outline-rect.svelte-1ats1rr{border-radius:0.4166666667vw;border:2px solid #bfd8ff;height:72%;width:90%}.below.svelte-1ats1rr main .outline-rect .logo.svelte-1ats1rr{position:absolute;z-index:2;top:0%;margin-left:auto;margin-right:auto;left:0;right:0}.below.svelte-1ats1rr main .outline-rect .content-container .content.svelte-1ats1rr{font-size:clamp(20px, 2vw, 2.0833333333vw);font-weight:400;text-align:center}.below.svelte-1ats1rr main .outline-rect .content-container .content b.svelte-1ats1rr{font-family:"Plex", monospace;font-weight:700}.center.svelte-1ats1rr.svelte-1ats1rr{display:grid;place-items:center}',
@@ -6168,9 +6241,9 @@ var init_layout_svelte = __esm({
     };
     About = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       $$result.css.add(css$2);
-      return `<div class="${"container svelte-1ats1rr"}"><div class="${"below svelte-1ats1rr"}"><main class="${"center svelte-1ats1rr"}"><div class="${"outline-rect center svelte-1ats1rr"}"><div class="${"content-container"}"><img src="${"/assets/avatar-ojas-small.svg"}" alt="${"Ojas"}" class="${"logo svelte-1ats1rr"}">
-					<div class="${"content svelte-1ats1rr"}">Hey, I\u2019m <b class="${"svelte-1ats1rr"}">Ojasvin Kirpane</b>. I\u2019m a <b class="${"svelte-1ats1rr"}">designer who codes</b>. Checkout my
-						<a class="${"inline"}" target="${"_blank"}" href="${"/assets/OjasvinKirpane-Resume-Site.pdf"}" download>Resume</a>.
+      return `<div class="container svelte-1ats1rr"><div class="below svelte-1ats1rr"><main class="center svelte-1ats1rr"><div class="outline-rect center svelte-1ats1rr"><div class="content-container"><img src="/assets/avatar-ojas-small.svg" alt="Ojas" class="logo svelte-1ats1rr">
+					<div class="content svelte-1ats1rr">Hey, I\u2019m <b class="svelte-1ats1rr">Ojasvin Kirpane</b>. I\u2019m a <b class="svelte-1ats1rr">designer who codes</b>. Checkout my
+						<a class="inline" target="_blank" href="/assets/OjasvinKirpane-Resume-Site.pdf" download>Resume</a>.
 					</div></div></div></main></div>
 </div>`;
     });
@@ -6180,18 +6253,18 @@ var init_layout_svelte = __esm({
     };
     Avatar = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       $$result.css.add(css$1);
-      return `<div id="${"avatar"}" class="${"svelte-yldonu"}"><object title="${"Ojasvin Avatar"}" type="${"image/svg+xml"}" data="${"/assets/avatar-ojas-calli.svg"}" class="${["svg-content notLoaded svelte-yldonu", ""].join(" ").trim()}"></object>
+      return `<div id="avatar" class="svelte-yldonu"><object title="Ojasvin Avatar" type="image/svg+xml" data="/assets/avatar-ojas-calli.svg" class="${["svg-content notLoaded svelte-yldonu", ""].join(" ").trim()}"></object>
 </div>`;
     });
-    css9 = {
+    css10 = {
       code: "#container.svelte-1p5n6nk{min-width:100vw;min-height:100vh}main#avatar-container.svelte-1p5n6nk{z-index:1;position:relative;max-height:100vh}#bg-sketch.svelte-1p5n6nk{z-index:0;position:absolute;top:0%;left:0%;width:100vw;height:100vh;display:none}",
       map: null
     };
-    allPosts = { "./post-1-feather.md": () => Promise.resolve().then(() => (init_post_1_feather_md(), post_1_feather_md_exports)), "./post-2-bulbul.md": () => Promise.resolve().then(() => (init_post_2_bulbul_md(), post_2_bulbul_md_exports)), "./post-3-varuna.md": () => Promise.resolve().then(() => (init_post_3_varuna_md(), post_3_varuna_md_exports)), "./post-4-duet.md": () => Promise.resolve().then(() => (init_post_4_duet_md(), post_4_duet_md_exports)), "./post-5-generative.md": () => Promise.resolve().then(() => (init_post_5_generative_md(), post_5_generative_md_exports)), "./post-6-this-site.md": () => Promise.resolve().then(() => (init_post_6_this_site_md(), post_6_this_site_md_exports)) };
+    allPosts = { "./post-1-feather.md": () => Promise.resolve().then(() => (init_post_1_feather_md(), post_1_feather_md_exports)), "./post-2-bulbul.md": () => Promise.resolve().then(() => (init_post_2_bulbul_md(), post_2_bulbul_md_exports)), "./post-3-varuna.md": () => Promise.resolve().then(() => (init_post_3_varuna_md(), post_3_varuna_md_exports)), "./post-4-duet.md": () => Promise.resolve().then(() => (init_post_4_duet_md(), post_4_duet_md_exports)), "./post-5-generative.md": () => Promise.resolve().then(() => (init_post_5_generative_md(), post_5_generative_md_exports)), "./post-6-this-site.md": () => Promise.resolve().then(() => (init_post_6_this_site_md(), post_6_this_site_md_exports)), "./post-7-universal.md": () => Promise.resolve().then(() => (init_post_7_universal_md(), post_7_universal_md_exports)) };
     body = [];
     for (let path in allPosts) {
-      body.push(allPosts[path]().then(({ metadata: metadata7 }) => {
-        return { path, metadata: metadata7 };
+      body.push(allPosts[path]().then(({ metadata: metadata8 }) => {
+        return { path, metadata: metadata8 };
       }));
     }
     load = async () => {
@@ -6205,17 +6278,17 @@ var init_layout_svelte = __esm({
       let { posts } = $$props;
       if ($$props.posts === void 0 && $$bindings.posts && posts !== void 0)
         $$bindings.posts(posts);
-      $$result.css.add(css9);
+      $$result.css.add(css10);
       $$unsubscribe_aboutSwitch();
-      return `${$$result.head += `${each(posts, (post) => {
-        return `<link rel="${"preload"}" as="${"image"}"${add_attribute("href", post.metadata.thumbnail, 0)} data-svelte="svelte-537ajm">`;
-      })}`, ""}
+      return `${$$result.head += `<!-- HEAD_svelte-537ajm_START -->${each(posts, (post) => {
+        return `<link rel="preload" as="image"${add_attribute("href", post.metadata.thumbnail, 0)}>`;
+      })}<!-- HEAD_svelte-537ajm_END -->`, ""}
 
-<div id="${"container"}" class="${"svelte-1p5n6nk"}">
-	<canvas id="${"bg-sketch"}" class="${"svelte-1p5n6nk"}"${add_attribute("this", canvas, 0)}></canvas>
-	<main id="${"avatar-container"}" class="${"svelte-1p5n6nk"}">${validate_component(Avatar, "Avatar").$$render($$result, {}, {}, {})}</main>
+<div id="container" class="svelte-1p5n6nk">
+	<canvas id="bg-sketch" class="svelte-1p5n6nk"${add_attribute("this", canvas, 0)}></canvas>
+	<main id="avatar-container" class="svelte-1p5n6nk">${validate_component(Avatar, "Avatar").$$render($$result, {}, {}, {})}</main>
 	${validate_component(Work, "Work").$$render($$result, { posts }, {}, {})}
-	<div style="${"position: absolute; top: 0%; min-height: 100vh; height:fit-content; z-index: 3"}">${slots.default ? slots.default({}) : ``}</div>
+	<div style="position: absolute; top: 0%; min-height: 100vh; height:fit-content; z-index: 3">${slots.default ? slots.default({}) : ``}</div>
 	${$aboutSwitch === "on" ? `${validate_component(About, "About").$$render($$result, {}, {}, {})}` : `${$aboutSwitch === "off" ? `<div></div>` : ``}`}
 
 	${validate_component(Nav, "Nav").$$render($$result, {}, {}, {})}
@@ -6227,18 +6300,18 @@ var init_layout_svelte = __esm({
 // .svelte-kit/output/server/nodes/0.js
 var __exports = {};
 __export(__exports, {
-  css: () => css10,
+  css: () => css11,
   entry: () => entry,
   js: () => js,
   module: () => layout_svelte_exports
 });
-var entry, js, css10;
+var entry, js, css11;
 var init__ = __esm({
   ".svelte-kit/output/server/nodes/0.js"() {
     init_layout_svelte();
-    entry = "pages/__layout.svelte-82447a0c.js";
-    js = ["pages/__layout.svelte-82447a0c.js", "chunks/preload-helper-e4860ae8.js", "chunks/index-bc8992d0.js", "chunks/workSwitch-bbe443d7.js", "chunks/post-container.svelte_svelte_type_style_lang-9baaa190.js", "chunks/singletons-d1fb5791.js"];
-    css10 = ["assets/pages/__layout.svelte-6dcda16b.css", "assets/post-container.svelte_svelte_type_style_lang-4393e908.css"];
+    entry = "pages/__layout.svelte-186cd6a9.js";
+    js = ["pages/__layout.svelte-186cd6a9.js", "chunks/preload-helper-e4860ae8.js", "chunks/index-001c6c62.js", "chunks/workSwitch-bbe443d7.js", "chunks/post-container.svelte_svelte_type_style_lang-a2767ae0.js", "chunks/singletons-d1fb5791.js"];
+    css11 = ["assets/pages/__layout.svelte-6dcda16b.css", "assets/post-container.svelte_svelte_type_style_lang-4393e908.css"];
   }
 });
 
@@ -6254,7 +6327,7 @@ function load2({ error: error2, status }) {
 var Error2;
 var init_error_svelte = __esm({
   ".svelte-kit/output/server/entries/fallbacks/error.svelte.js"() {
-    init_index_1c45052d();
+    init_index_bbc07b1b();
     Error2 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       let { status } = $$props;
       let { error: error2 } = $$props;
@@ -6277,18 +6350,18 @@ ${error2.stack ? `<pre>${escape(error2.stack)}</pre>` : ``}`;
 // .svelte-kit/output/server/nodes/1.js
 var __exports2 = {};
 __export(__exports2, {
-  css: () => css11,
+  css: () => css12,
   entry: () => entry2,
   js: () => js2,
   module: () => error_svelte_exports
 });
-var entry2, js2, css11;
+var entry2, js2, css12;
 var init__2 = __esm({
   ".svelte-kit/output/server/nodes/1.js"() {
     init_error_svelte();
-    entry2 = "error.svelte-3ff4da05.js";
-    js2 = ["error.svelte-3ff4da05.js", "chunks/index-bc8992d0.js"];
-    css11 = [];
+    entry2 = "error.svelte-92c41f76.js";
+    js2 = ["error.svelte-92c41f76.js", "chunks/index-001c6c62.js"];
+    css12 = [];
   }
 });
 
@@ -6300,10 +6373,10 @@ __export(index_svelte_exports, {
 var Routes;
 var init_index_svelte = __esm({
   ".svelte-kit/output/server/entries/pages/index.svelte.js"() {
-    init_index_1c45052d();
+    init_index_bbc07b1b();
     init_workSwitch_ea5ed9a2();
     Routes = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      return `${$$result.head += `${$$result.title = `<title>Ojasvin&#39;s Portfolio</title>`, ""}<meta name="${"title"}" content="${"Ojasvin's Portfolio"}" data-svelte="svelte-1ojkqu0"><meta name="${"description"}" content="${"I'm a designer who codes."}" data-svelte="svelte-1ojkqu0"><meta name="${"robots"}" content="${"index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}" data-svelte="svelte-1ojkqu0"><meta name="${"twitter:card"}" content="${"summary_large_image"}" data-svelte="svelte-1ojkqu0"><meta name="${"twitter:text:title"}" content="${"Ojasvin's Portfolio!"}" data-svelte="svelte-1ojkqu0"><meta name="${"twitter:text:description"}" content="${"I'm a designer who codes."}" data-svelte="svelte-1ojkqu0"><meta name="${"twitter:card"}" content="${"summary_large_image"}" data-svelte="svelte-1ojkqu0"><meta name="${"twitter:image"}" content="${"https://ojasvin.me/assets/screen-banner.jpg"}" data-svelte="svelte-1ojkqu0"><meta property="${"og:type"}" content="${"website"}" data-svelte="svelte-1ojkqu0"><meta property="${"og:url"}" content="${"https://ojasvin.me/"}" data-svelte="svelte-1ojkqu0"><meta property="${"og:title"}" content="${"Ojasvin's Portfolio"}" data-svelte="svelte-1ojkqu0"><meta property="${"og:description"}" content="${"I'm a designer who codes."}" data-svelte="svelte-1ojkqu0"><meta property="${"og:image"}" content="${"https://ojasvin.me/assets/screen-banner.jpg"}" data-svelte="svelte-1ojkqu0"><meta property="${"og:image:alt"}" content="${"Ojasvin Portfolio!"}" data-svelte="svelte-1ojkqu0">`, ""}`;
+      return `${$$result.head += `<!-- HEAD_svelte-1ojkqu0_START -->${$$result.title = `<title>Ojasvin&#39;s Portfolio</title>`, ""}<meta name="title" content="Ojasvin's Portfolio"><meta name="description" content="I'm a designer who codes."><meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:text:title" content="Ojasvin's Portfolio!"><meta name="twitter:text:description" content="I'm a designer who codes."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://ojasvin.me/assets/screen-banner.jpg"><meta property="og:type" content="website"><meta property="og:url" content="https://ojasvin.me/"><meta property="og:title" content="Ojasvin's Portfolio"><meta property="og:description" content="I'm a designer who codes."><meta property="og:image" content="https://ojasvin.me/assets/screen-banner.jpg"><meta property="og:image:alt" content="Ojasvin Portfolio!"><!-- HEAD_svelte-1ojkqu0_END -->`, ""}`;
     });
   }
 });
@@ -6311,156 +6384,126 @@ var init_index_svelte = __esm({
 // .svelte-kit/output/server/nodes/2.js
 var __exports3 = {};
 __export(__exports3, {
-  css: () => css12,
+  css: () => css13,
   entry: () => entry3,
   js: () => js3,
   module: () => index_svelte_exports
 });
-var entry3, js3, css12;
+var entry3, js3, css13;
 var init__3 = __esm({
   ".svelte-kit/output/server/nodes/2.js"() {
     init_index_svelte();
-    entry3 = "pages/index.svelte-7a37e3ab.js";
-    js3 = ["pages/index.svelte-7a37e3ab.js", "chunks/index-bc8992d0.js", "chunks/workSwitch-bbe443d7.js"];
-    css12 = [];
+    entry3 = "pages/index.svelte-5cc52dc7.js";
+    js3 = ["pages/index.svelte-5cc52dc7.js", "chunks/index-001c6c62.js", "chunks/workSwitch-bbe443d7.js"];
+    css13 = [];
   }
 });
 
 // .svelte-kit/output/server/nodes/3.js
 var __exports4 = {};
 __export(__exports4, {
-  css: () => css13,
+  css: () => css14,
   entry: () => entry4,
   js: () => js4,
   module: () => post_1_feather_md_exports
 });
-var entry4, js4, css13;
+var entry4, js4, css14;
 var init__4 = __esm({
   ".svelte-kit/output/server/nodes/3.js"() {
     init_post_1_feather_md();
-    entry4 = "pages/post-1-feather.md-05b5c5b3.js";
-    js4 = ["pages/post-1-feather.md-05b5c5b3.js", "chunks/index-bc8992d0.js", "chunks/post-container-d832e47f.js", "chunks/post-container.svelte_svelte_type_style_lang-9baaa190.js", "chunks/singletons-d1fb5791.js", "chunks/workSwitch-bbe443d7.js", "chunks/meta-bf8687f2.js"];
-    css13 = ["assets/pages/post-1-feather.md-7c4082d3.css", "assets/video-insert.svelte_svelte_type_style_lang-8a9cebea.css", "assets/post-container.svelte_svelte_type_style_lang-4393e908.css"];
+    entry4 = "pages/post-1-feather.md-102aaf52.js";
+    js4 = ["pages/post-1-feather.md-102aaf52.js", "chunks/index-001c6c62.js", "chunks/post-container-9ae78569.js", "chunks/post-container.svelte_svelte_type_style_lang-a2767ae0.js", "chunks/singletons-d1fb5791.js", "chunks/workSwitch-bbe443d7.js", "chunks/meta-705228a4.js"];
+    css14 = ["assets/pages/post-1-feather.md-7c4082d3.css", "assets/video-insert.svelte_svelte_type_style_lang-8a9cebea.css", "assets/post-container.svelte_svelte_type_style_lang-4393e908.css"];
   }
 });
 
 // .svelte-kit/output/server/nodes/4.js
 var __exports5 = {};
 __export(__exports5, {
-  css: () => css14,
+  css: () => css15,
   entry: () => entry5,
   js: () => js5,
   module: () => post_2_bulbul_md_exports
 });
-var entry5, js5, css14;
+var entry5, js5, css15;
 var init__5 = __esm({
   ".svelte-kit/output/server/nodes/4.js"() {
     init_post_2_bulbul_md();
-    entry5 = "pages/post-2-bulbul.md-2c7db903.js";
-    js5 = ["pages/post-2-bulbul.md-2c7db903.js", "chunks/index-bc8992d0.js", "chunks/post-container-d832e47f.js", "chunks/post-container.svelte_svelte_type_style_lang-9baaa190.js", "chunks/singletons-d1fb5791.js", "chunks/workSwitch-bbe443d7.js", "chunks/meta-bf8687f2.js", "chunks/video-insert-fdcc853c.js"];
-    css14 = ["assets/pages/post-2-bulbul.md-416080b1.css", "assets/video-insert.svelte_svelte_type_style_lang-8a9cebea.css", "assets/post-container.svelte_svelte_type_style_lang-4393e908.css"];
+    entry5 = "pages/post-2-bulbul.md-88edd271.js";
+    js5 = ["pages/post-2-bulbul.md-88edd271.js", "chunks/index-001c6c62.js", "chunks/post-container-9ae78569.js", "chunks/post-container.svelte_svelte_type_style_lang-a2767ae0.js", "chunks/singletons-d1fb5791.js", "chunks/workSwitch-bbe443d7.js", "chunks/meta-705228a4.js", "chunks/video-insert-70dbdab5.js"];
+    css15 = ["assets/pages/post-2-bulbul.md-416080b1.css", "assets/video-insert.svelte_svelte_type_style_lang-8a9cebea.css", "assets/post-container.svelte_svelte_type_style_lang-4393e908.css"];
   }
 });
 
 // .svelte-kit/output/server/nodes/5.js
 var __exports6 = {};
 __export(__exports6, {
-  css: () => css15,
+  css: () => css16,
   entry: () => entry6,
   js: () => js6,
   module: () => post_3_varuna_md_exports
 });
-var entry6, js6, css15;
+var entry6, js6, css16;
 var init__6 = __esm({
   ".svelte-kit/output/server/nodes/5.js"() {
     init_post_3_varuna_md();
-    entry6 = "pages/post-3-varuna.md-cfef7866.js";
-    js6 = ["pages/post-3-varuna.md-cfef7866.js", "chunks/index-bc8992d0.js", "chunks/post-container-d832e47f.js", "chunks/post-container.svelte_svelte_type_style_lang-9baaa190.js", "chunks/singletons-d1fb5791.js", "chunks/workSwitch-bbe443d7.js", "chunks/meta-bf8687f2.js"];
-    css15 = ["assets/pages/post-3-varuna.md-d3271f36.css", "assets/post-container.svelte_svelte_type_style_lang-4393e908.css"];
+    entry6 = "pages/post-3-varuna.md-d4cb1c5b.js";
+    js6 = ["pages/post-3-varuna.md-d4cb1c5b.js", "chunks/index-001c6c62.js", "chunks/post-container-9ae78569.js", "chunks/post-container.svelte_svelte_type_style_lang-a2767ae0.js", "chunks/singletons-d1fb5791.js", "chunks/workSwitch-bbe443d7.js", "chunks/meta-705228a4.js"];
+    css16 = ["assets/pages/post-3-varuna.md-d3271f36.css", "assets/post-container.svelte_svelte_type_style_lang-4393e908.css"];
   }
 });
 
 // .svelte-kit/output/server/nodes/6.js
 var __exports7 = {};
 __export(__exports7, {
-  css: () => css16,
+  css: () => css17,
   entry: () => entry7,
   js: () => js7,
   module: () => post_4_duet_md_exports
 });
-var entry7, js7, css16;
+var entry7, js7, css17;
 var init__7 = __esm({
   ".svelte-kit/output/server/nodes/6.js"() {
     init_post_4_duet_md();
-    entry7 = "pages/post-4-duet.md-89347097.js";
-    js7 = ["pages/post-4-duet.md-89347097.js", "chunks/index-bc8992d0.js", "chunks/post-container-d832e47f.js", "chunks/post-container.svelte_svelte_type_style_lang-9baaa190.js", "chunks/singletons-d1fb5791.js", "chunks/workSwitch-bbe443d7.js", "chunks/meta-bf8687f2.js", "chunks/video-insert-fdcc853c.js"];
-    css16 = ["assets/pages/post-4-duet.md-3cfdfe34.css", "assets/video-insert.svelte_svelte_type_style_lang-8a9cebea.css", "assets/post-container.svelte_svelte_type_style_lang-4393e908.css"];
+    entry7 = "pages/post-4-duet.md-5eca6332.js";
+    js7 = ["pages/post-4-duet.md-5eca6332.js", "chunks/index-001c6c62.js", "chunks/post-container-9ae78569.js", "chunks/post-container.svelte_svelte_type_style_lang-a2767ae0.js", "chunks/singletons-d1fb5791.js", "chunks/workSwitch-bbe443d7.js", "chunks/meta-705228a4.js", "chunks/video-insert-70dbdab5.js"];
+    css17 = ["assets/pages/post-4-duet.md-3cfdfe34.css", "assets/video-insert.svelte_svelte_type_style_lang-8a9cebea.css", "assets/post-container.svelte_svelte_type_style_lang-4393e908.css"];
   }
 });
 
 // .svelte-kit/output/server/nodes/7.js
 var __exports8 = {};
 __export(__exports8, {
-  css: () => css17,
+  css: () => css18,
   entry: () => entry8,
   js: () => js8,
   module: () => post_5_generative_md_exports
 });
-var entry8, js8, css17;
+var entry8, js8, css18;
 var init__8 = __esm({
   ".svelte-kit/output/server/nodes/7.js"() {
     init_post_5_generative_md();
-    entry8 = "pages/post-5-generative.md-65f1e9ba.js";
-    js8 = ["pages/post-5-generative.md-65f1e9ba.js", "chunks/index-bc8992d0.js", "chunks/post-container-d832e47f.js", "chunks/post-container.svelte_svelte_type_style_lang-9baaa190.js", "chunks/singletons-d1fb5791.js", "chunks/workSwitch-bbe443d7.js"];
-    css17 = ["assets/pages/post-5-generative.md-161f61a9.css", "assets/post-container.svelte_svelte_type_style_lang-4393e908.css"];
+    entry8 = "pages/post-5-generative.md-81a0285e.js";
+    js8 = ["pages/post-5-generative.md-81a0285e.js", "chunks/index-001c6c62.js", "chunks/post-container-9ae78569.js", "chunks/post-container.svelte_svelte_type_style_lang-a2767ae0.js", "chunks/singletons-d1fb5791.js", "chunks/workSwitch-bbe443d7.js"];
+    css18 = ["assets/pages/post-5-generative.md-161f61a9.css", "assets/post-container.svelte_svelte_type_style_lang-4393e908.css"];
   }
 });
 
 // .svelte-kit/output/server/nodes/8.js
 var __exports9 = {};
 __export(__exports9, {
-  css: () => css18,
+  css: () => css19,
   entry: () => entry9,
   js: () => js9,
   module: () => post_6_this_site_md_exports
 });
-var entry9, js9, css18;
+var entry9, js9, css19;
 var init__9 = __esm({
   ".svelte-kit/output/server/nodes/8.js"() {
     init_post_6_this_site_md();
-    entry9 = "pages/post-6-this-site.md-9b0428e8.js";
-    js9 = ["pages/post-6-this-site.md-9b0428e8.js", "chunks/index-bc8992d0.js", "chunks/post-container-d832e47f.js", "chunks/post-container.svelte_svelte_type_style_lang-9baaa190.js", "chunks/singletons-d1fb5791.js", "chunks/workSwitch-bbe443d7.js", "chunks/meta-bf8687f2.js"];
-    css18 = ["assets/pages/post-6-this-site.md-770e75dd.css", "assets/video-insert.svelte_svelte_type_style_lang-8a9cebea.css", "assets/post-container.svelte_svelte_type_style_lang-4393e908.css"];
-  }
-});
-
-// .svelte-kit/output/server/entries/pages/work/index.svelte.js
-var index_svelte_exports2 = {};
-__export(index_svelte_exports2, {
-  default: () => Work2
-});
-var css19, Work2;
-var init_index_svelte2 = __esm({
-  ".svelte-kit/output/server/entries/pages/work/index.svelte.js"() {
-    init_index_1c45052d();
-    css19 = {
-      code: ".feed-container.svelte-3qbkq8.svelte-3qbkq8{width:clamp(300px, 80%, 29.1666666667vw);height:fit-content;padding:5%}.feed-container.svelte-3qbkq8 img.svelte-3qbkq8{max-width:100%}.feed-container.svelte-3qbkq8 .spacer.bottom.svelte-3qbkq8{width:auto;height:clamp(15px, 15%, 1.0416666667vw)}",
-      map: null
-    };
-    Work2 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      let { posts } = $$props;
-      if ($$props.posts === void 0 && $$bindings.posts && posts !== void 0)
-        $$bindings.posts(posts);
-      $$result.css.add(css19);
-      return `${$$result.head += `${$$result.title = `<title>Ojasvin | WOrk</title>`, ""}`, ""}
-
-<div class="${"feed-container svelte-3qbkq8"}">${each(posts, ({ path, metadata: { title: title7, tag, thumbnail: thumbnail7 } }) => {
-        return `<div><a sveltekit:prefetch${add_attribute("href", `/work/${path.replace(".md", "")}`, 0)} style="${"position:relative"}"><img${add_attribute("src", thumbnail7, 0)}${add_attribute("alt", title7, 0)} class="${"grow svelte-3qbkq8"}">
-			</a></div>
-		<div class="${"spacer bottom svelte-3qbkq8"}"></div>`;
-      })}
-</div>`;
-    });
+    entry9 = "pages/post-6-this-site.md-5971e6c5.js";
+    js9 = ["pages/post-6-this-site.md-5971e6c5.js", "chunks/index-001c6c62.js", "chunks/post-container-9ae78569.js", "chunks/post-container.svelte_svelte_type_style_lang-a2767ae0.js", "chunks/singletons-d1fb5791.js", "chunks/workSwitch-bbe443d7.js", "chunks/meta-705228a4.js"];
+    css19 = ["assets/pages/post-6-this-site.md-770e75dd.css", "assets/video-insert.svelte_svelte_type_style_lang-8a9cebea.css", "assets/post-container.svelte_svelte_type_style_lang-4393e908.css"];
   }
 });
 
@@ -6470,15 +6513,63 @@ __export(__exports10, {
   css: () => css20,
   entry: () => entry10,
   js: () => js10,
-  module: () => index_svelte_exports2
+  module: () => post_7_universal_md_exports
 });
 var entry10, js10, css20;
 var init__10 = __esm({
   ".svelte-kit/output/server/nodes/9.js"() {
+    init_post_7_universal_md();
+    entry10 = "pages/post-7-universal.md-3105466e.js";
+    js10 = ["pages/post-7-universal.md-3105466e.js", "chunks/index-001c6c62.js", "chunks/post-container-9ae78569.js", "chunks/post-container.svelte_svelte_type_style_lang-a2767ae0.js", "chunks/singletons-d1fb5791.js", "chunks/workSwitch-bbe443d7.js", "chunks/meta-705228a4.js"];
+    css20 = ["assets/pages/post-7-universal.md-e8c74d3a.css", "assets/video-insert.svelte_svelte_type_style_lang-8a9cebea.css", "assets/post-container.svelte_svelte_type_style_lang-4393e908.css"];
+  }
+});
+
+// .svelte-kit/output/server/entries/pages/work/index.svelte.js
+var index_svelte_exports2 = {};
+__export(index_svelte_exports2, {
+  default: () => Work2
+});
+var css21, Work2;
+var init_index_svelte2 = __esm({
+  ".svelte-kit/output/server/entries/pages/work/index.svelte.js"() {
+    init_index_bbc07b1b();
+    css21 = {
+      code: ".feed-container.svelte-3qbkq8.svelte-3qbkq8{width:clamp(300px, 80%, 29.1666666667vw);height:fit-content;padding:5%}.feed-container.svelte-3qbkq8 img.svelte-3qbkq8{max-width:100%}.feed-container.svelte-3qbkq8 .spacer.bottom.svelte-3qbkq8{width:auto;height:clamp(15px, 15%, 1.0416666667vw)}",
+      map: null
+    };
+    Work2 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      let { posts } = $$props;
+      if ($$props.posts === void 0 && $$bindings.posts && posts !== void 0)
+        $$bindings.posts(posts);
+      $$result.css.add(css21);
+      return `${$$result.head += `<!-- HEAD_svelte-1conyrn_START -->${$$result.title = `<title>Ojasvin | WOrk</title>`, ""}<!-- HEAD_svelte-1conyrn_END -->`, ""}
+
+<div class="feed-container svelte-3qbkq8">${each(posts, ({ path, metadata: { title: title8, tag, thumbnail: thumbnail8 } }) => {
+        return `<div><a sveltekit:prefetch${add_attribute("href", `/work/${path.replace(".md", "")}`, 0)} style="position:relative"><img${add_attribute("src", thumbnail8, 0)}${add_attribute("alt", title8, 0)} class="grow svelte-3qbkq8">
+			</a></div>
+		<div class="spacer bottom svelte-3qbkq8"></div>`;
+      })}
+</div>`;
+    });
+  }
+});
+
+// .svelte-kit/output/server/nodes/10.js
+var __exports11 = {};
+__export(__exports11, {
+  css: () => css22,
+  entry: () => entry11,
+  js: () => js11,
+  module: () => index_svelte_exports2
+});
+var entry11, js11, css22;
+var init__11 = __esm({
+  ".svelte-kit/output/server/nodes/10.js"() {
     init_index_svelte2();
-    entry10 = "pages/work/index.svelte-31e35e52.js";
-    js10 = ["pages/work/index.svelte-31e35e52.js", "chunks/index-bc8992d0.js"];
-    css20 = ["assets/pages/work/index.svelte-f3abe544.css"];
+    entry11 = "pages/work/index.svelte-ed1fcb2d.js";
+    js11 = ["pages/work/index.svelte-ed1fcb2d.js", "chunks/index-001c6c62.js"];
+    css22 = ["assets/pages/work/index.svelte-f3abe544.css"];
   }
 });
 
@@ -6565,7 +6656,7 @@ async function setResponse(res, response) {
 }
 
 // .svelte-kit/output/server/index.js
-init_index_1c45052d();
+init_index_bbc07b1b();
 var __accessCheck2 = (obj, member, msg) => {
   if (!member.has(obj))
     throw TypeError("Cannot " + msg);
@@ -6620,15 +6711,15 @@ var Root = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   return `
 
 
-${components[1] ? `${validate_component(components[0] || missing_component, "svelte:component").$$render($$result, Object.assign(props_0 || {}), {}, {
+${components[1] ? `${validate_component(components[0] || missing_component, "svelte:component").$$render($$result, Object.assign({}, props_0 || {}), {}, {
     default: () => {
-      return `${components[2] ? `${validate_component(components[1] || missing_component, "svelte:component").$$render($$result, Object.assign(props_1 || {}), {}, {
+      return `${components[2] ? `${validate_component(components[1] || missing_component, "svelte:component").$$render($$result, Object.assign({}, props_1 || {}), {}, {
         default: () => {
-          return `${validate_component(components[2] || missing_component, "svelte:component").$$render($$result, Object.assign(props_2 || {}), {}, {})}`;
+          return `${validate_component(components[2] || missing_component, "svelte:component").$$render($$result, Object.assign({}, props_2 || {}), {}, {})}`;
         }
-      })}` : `${validate_component(components[1] || missing_component, "svelte:component").$$render($$result, Object.assign(props_1 || {}), {}, {})}`}`;
+      })}` : `${validate_component(components[1] || missing_component, "svelte:component").$$render($$result, Object.assign({}, props_1 || {}), {}, {})}`}`;
     }
-  })}` : `${validate_component(components[0] || missing_component, "svelte:component").$$render($$result, Object.assign(props_0 || {}), {}, {})}`}
+  })}` : `${validate_component(components[0] || missing_component, "svelte:component").$$render($$result, Object.assign({}, props_0 || {}), {}, {})}`}
 
 ${``}`;
 });
@@ -6760,7 +6851,7 @@ async function render_endpoint(event, mod) {
 var chars$1 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_$";
 var unsafeChars = /[<>\b\f\n\r\t\0\u2028\u2029]/g;
 var reserved = /^(?:do|if|in|for|int|let|new|try|var|byte|case|char|else|enum|goto|long|this|void|with|await|break|catch|class|const|final|float|short|super|throw|while|yield|delete|double|export|import|native|return|switch|throws|typeof|boolean|default|extends|finally|package|private|abstract|continue|debugger|function|volatile|interface|protected|transient|implements|instanceof|synchronized)$/;
-var escaped2 = {
+var escaped = {
   "<": "\\u003C",
   ">": "\\u003E",
   "/": "\\u002F",
@@ -6818,12 +6909,12 @@ function devalue(value) {
   }
   walk(value);
   var names = /* @__PURE__ */ new Map();
-  Array.from(counts).filter(function(entry11) {
-    return entry11[1] > 1;
+  Array.from(counts).filter(function(entry12) {
+    return entry12[1] > 1;
   }).sort(function(a, b) {
     return b[1] - a[1];
-  }).forEach(function(entry11, i2) {
-    names.set(entry11[0], getName(i2));
+  }).forEach(function(entry12, i2) {
+    names.set(entry12[0], getName(i2));
   });
   function stringify(thing) {
     if (names.has(thing)) {
@@ -6945,7 +7036,7 @@ function getType(thing) {
   return Object.prototype.toString.call(thing).slice(8, -1);
 }
 function escapeUnsafeChar(c) {
-  return escaped2[c] || c;
+  return escaped[c] || c;
 }
 function escapeUnsafeChars(str) {
   return str.replace(unsafeChars, escapeUnsafeChar);
@@ -6963,8 +7054,8 @@ function stringifyString(str) {
     var code = char.charCodeAt(0);
     if (char === '"') {
       result += '\\"';
-    } else if (char in escaped2) {
-      result += escaped2[char];
+    } else if (char in escaped) {
+      result += escaped[char];
     } else if (code >= 55296 && code <= 57343) {
       var next = str.charCodeAt(i2 + 1);
       if (code <= 56319 && (next >= 56320 && next <= 57343)) {
@@ -8564,10 +8655,10 @@ var Server = class {
 // .svelte-kit/vercel-tmp/manifest.js
 var manifest = {
   appDir: "_app",
-  assets: /* @__PURE__ */ new Set([".DS_Store", "assets/.DS_Store", "assets/OJ_FAVI.ico", "assets/OjasvinKirpane-Resume-Site.pdf", "assets/avatar-ojas-calli.svg", "assets/avatar-ojas-small.svg", "assets/close.svg", "assets/email.svg", "assets/post-1-image-banner.webp", "assets/post-1-image-card.webp", "assets/post-1-image-cta.webp", "assets/post-1-image-everything.webp", "assets/post-1-image-features.webp", "assets/post-1-image-flow.png", "assets/post-1-image-flow.webp", "assets/post-1-image-interface-1.webp", "assets/post-1-image-interface-2.webp", "assets/post-1-image-interface-3.webp", "assets/post-1-image-pitch-2.webp", "assets/post-1-image-pitch-3.webp", "assets/post-1-image-pitch.webp", "assets/post-1-image-team.webp", "assets/post-1-video-iterations.gif", "assets/post-1-video-onboarding.gif", "assets/post-1-video-style.gif", "assets/post-2-image-banner.webp", "assets/post-2-image-process.webp", "assets/post-2-image-product.webp", "assets/post-2-image-prog.webp", "assets/post-2-image-talent.webp", "assets/post-2-video-proto-1.mp4", "assets/post-2-video-proto-2-1.mp4", "assets/post-2-video-proto-2-2.mp4", "assets/post-2-video-proto-3-1.mp4", "assets/post-2-video-proto-3-2.mp4", "assets/post-3-image-banner.webp", "assets/post-3-image-calendar.webp", "assets/post-3-image-card-1.webp", "assets/post-3-image-card-2.webp", "assets/post-3-image-card-3.webp", "assets/post-3-image-process.webp", "assets/post-3-image-product.webp", "assets/post-3-image-sketch.webp", "assets/post-4-image-banner.webp", "assets/post-4-image-beauty.webp", "assets/post-4-image-dude.webp", "assets/post-4-image-example.webp", "assets/post-4-image-girl.webp", "assets/post-4-image-interface.webp", "assets/post-4-video-final.mp4", "assets/post-4-video-proto-1.mp4", "assets/post-4-video-proto-2.mp4", "assets/post-4-video-proto-3.mp4", "assets/post-6-image-iterations.webp", "assets/post-6-video-iterations.gif", "assets/screen-banner.jpg", "assets/site-banner.webp", "assets/sticker-bulbul.svg", "assets/sticker-duet.svg", "assets/sticker-feather.svg", "assets/sticker-gen.svg", "assets/sticker-timer.svg", "assets/sticker-varuna.svg", "favicon.png", "fonts/Bonkers.woff2", "fonts/plexBold.woff2", "fonts/plexLight.woff2", "fonts/plexRegular.woff2"]),
+  assets: /* @__PURE__ */ new Set([".DS_Store", "assets/.DS_Store", "assets/OJ_FAVI.ico", "assets/OjasvinKirpane-Resume-Site.pdf", "assets/avatar-ojas-calli.svg", "assets/avatar-ojas-small.svg", "assets/close.svg", "assets/email.svg", "assets/post-1-image-banner.webp", "assets/post-1-image-card.webp", "assets/post-1-image-cta.webp", "assets/post-1-image-everything.webp", "assets/post-1-image-features.webp", "assets/post-1-image-flow.png", "assets/post-1-image-flow.webp", "assets/post-1-image-interface-1.webp", "assets/post-1-image-interface-2.webp", "assets/post-1-image-interface-3.webp", "assets/post-1-image-pitch-2.webp", "assets/post-1-image-pitch-3.webp", "assets/post-1-image-pitch.webp", "assets/post-1-image-team.webp", "assets/post-1-video-iterations.gif", "assets/post-1-video-onboarding.gif", "assets/post-1-video-style.gif", "assets/post-2-image-banner.webp", "assets/post-2-image-process.webp", "assets/post-2-image-product.webp", "assets/post-2-image-prog.webp", "assets/post-2-image-talent.webp", "assets/post-2-video-proto-1.mp4", "assets/post-2-video-proto-2-1.mp4", "assets/post-2-video-proto-2-2.mp4", "assets/post-2-video-proto-3-1.mp4", "assets/post-2-video-proto-3-2.mp4", "assets/post-3-image-banner.webp", "assets/post-3-image-calendar.webp", "assets/post-3-image-card-1.webp", "assets/post-3-image-card-2.webp", "assets/post-3-image-card-3.webp", "assets/post-3-image-process.webp", "assets/post-3-image-product.webp", "assets/post-3-image-sketch.webp", "assets/post-4-image-banner.webp", "assets/post-4-image-beauty.webp", "assets/post-4-image-dude.webp", "assets/post-4-image-example.webp", "assets/post-4-image-girl.webp", "assets/post-4-image-interface.webp", "assets/post-4-video-final.mp4", "assets/post-4-video-proto-1.mp4", "assets/post-4-video-proto-2.mp4", "assets/post-4-video-proto-3.mp4", "assets/post-6-image-iterations.webp", "assets/post-6-video-iterations.gif", "assets/post-7-gif/.DS_Store", "assets/post-7-gif/Frame 30.png", "assets/post-7-gif/Frame 31.png", "assets/post-7-gif/Frame 32.png", "assets/post-7-gif/Frame 33.png", "assets/post-7-gif/Frame 34.png", "assets/post-7-gif/Frame 35.png", "assets/post-7-gif/post-7-video-first.gif", "assets/post-7-image-ds-buttons.png", "assets/post-7-image-ds-colors.png", "assets/post-7-image-ds-components.png", "assets/post-7-image-flow-1.png", "assets/post-7-image-flow-2.png", "assets/post-7-image-product.png", "assets/post-7-video-first.gif", "assets/post-7-video-lego.gif", "assets/screen-banner.jpg", "assets/site-banner.webp", "assets/sticker-bulbul.svg", "assets/sticker-duet.svg", "assets/sticker-feather.svg", "assets/sticker-gen.svg", "assets/sticker-timer.svg", "assets/sticker-varuna.svg", "favicon.png", "fonts/Bonkers.woff2", "fonts/plexBold.woff2", "fonts/plexLight.woff2", "fonts/plexRegular.woff2"]),
   mimeTypes: { ".ico": "image/vnd.microsoft.icon", ".pdf": "application/pdf", ".svg": "image/svg+xml", ".webp": "image/webp", ".png": "image/png", ".gif": "image/gif", ".mp4": "video/mp4", ".jpg": "image/jpeg", ".woff2": "font/woff2" },
   _: {
-    entry: { "file": "start-0463277b.js", "js": ["start-0463277b.js", "chunks/index-bc8992d0.js", "chunks/preload-helper-e4860ae8.js", "chunks/singletons-d1fb5791.js"], "css": [] },
+    entry: { "file": "start-3a2a53d3.js", "js": ["start-3a2a53d3.js", "chunks/index-001c6c62.js", "chunks/preload-helper-e4860ae8.js", "chunks/singletons-d1fb5791.js"], "css": [] },
     nodes: [
       () => Promise.resolve().then(() => (init__(), __exports)),
       () => Promise.resolve().then(() => (init__2(), __exports2)),
@@ -8578,7 +8669,8 @@ var manifest = {
       () => Promise.resolve().then(() => (init__7(), __exports7)),
       () => Promise.resolve().then(() => (init__8(), __exports8)),
       () => Promise.resolve().then(() => (init__9(), __exports9)),
-      () => Promise.resolve().then(() => (init__10(), __exports10))
+      () => Promise.resolve().then(() => (init__10(), __exports10)),
+      () => Promise.resolve().then(() => (init__11(), __exports11))
     ],
     routes: [
       {
@@ -8660,13 +8752,24 @@ var manifest = {
       },
       {
         type: "page",
+        id: "post-7-universal",
+        pattern: /^\/post-7-universal\/?$/,
+        names: [],
+        types: [],
+        path: "/post-7-universal",
+        shadow: null,
+        a: [0, 9],
+        b: [1]
+      },
+      {
+        type: "page",
         id: "work",
         pattern: /^\/work\/?$/,
         names: [],
         types: [],
         path: "/work",
         shadow: null,
-        a: [0, 9],
+        a: [0, 10],
         b: [1]
       }
     ],

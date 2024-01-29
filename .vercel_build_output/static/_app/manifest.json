@@ -1,10 +1,10 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-0463277b.js",
+    "file": "start-3a2a53d3.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
-      "_index-bc8992d0.js",
+      "_index-001c6c62.js",
       "_preload-helper-e4860ae8.js",
       "_singletons-d1fb5791.js"
     ],
@@ -18,19 +18,20 @@
       "src/routes/post-4-duet.md",
       "src/routes/post-5-generative.md",
       "src/routes/post-6-this-site.md",
+      "src/routes/post-7-universal.md",
       "src/routes/work/index.svelte"
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-82447a0c.js",
+    "file": "pages/__layout.svelte-186cd6a9.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_preload-helper-e4860ae8.js",
-      "_index-bc8992d0.js",
+      "_index-001c6c62.js",
       "_workSwitch-bbe443d7.js",
-      "_post-container.svelte_svelte_type_style_lang-9baaa190.js",
+      "_post-container.svelte_svelte_type_style_lang-a2767ae0.js",
       "_singletons-d1fb5791.js"
     ],
     "dynamicImports": [
@@ -39,42 +40,43 @@
       "src/routes/post-3-varuna.md",
       "src/routes/post-4-duet.md",
       "src/routes/post-5-generative.md",
-      "src/routes/post-6-this-site.md"
+      "src/routes/post-6-this-site.md",
+      "src/routes/post-7-universal.md"
     ],
     "css": [
       "assets/pages/__layout.svelte-6dcda16b.css"
     ]
   },
   ".svelte-kit/runtime/components/error.svelte": {
-    "file": "error.svelte-3ff4da05.js",
+    "file": "error.svelte-92c41f76.js",
     "src": ".svelte-kit/runtime/components/error.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-bc8992d0.js"
+      "_index-001c6c62.js"
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-7a37e3ab.js",
+    "file": "pages/index.svelte-5cc52dc7.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-bc8992d0.js",
+      "_index-001c6c62.js",
       "_workSwitch-bbe443d7.js"
     ]
   },
   "src/routes/post-1-feather.md": {
-    "file": "pages/post-1-feather.md-05b5c5b3.js",
+    "file": "pages/post-1-feather.md-102aaf52.js",
     "src": "src/routes/post-1-feather.md",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-bc8992d0.js",
-      "_post-container-d832e47f.js",
-      "_meta-bf8687f2.js",
+      "_index-001c6c62.js",
+      "_post-container-9ae78569.js",
+      "_meta-705228a4.js",
       "_workSwitch-bbe443d7.js",
-      "_post-container.svelte_svelte_type_style_lang-9baaa190.js",
+      "_post-container.svelte_svelte_type_style_lang-a2767ae0.js",
       "_singletons-d1fb5791.js"
     ],
     "css": [
@@ -83,17 +85,17 @@
     ]
   },
   "src/routes/post-2-bulbul.md": {
-    "file": "pages/post-2-bulbul.md-2c7db903.js",
+    "file": "pages/post-2-bulbul.md-88edd271.js",
     "src": "src/routes/post-2-bulbul.md",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-bc8992d0.js",
-      "_post-container-d832e47f.js",
-      "_meta-bf8687f2.js",
-      "_video-insert-fdcc853c.js",
+      "_index-001c6c62.js",
+      "_post-container-9ae78569.js",
+      "_meta-705228a4.js",
+      "_video-insert-70dbdab5.js",
       "_workSwitch-bbe443d7.js",
-      "_post-container.svelte_svelte_type_style_lang-9baaa190.js",
+      "_post-container.svelte_svelte_type_style_lang-a2767ae0.js",
       "_singletons-d1fb5791.js"
     ],
     "css": [
@@ -102,16 +104,16 @@
     ]
   },
   "src/routes/post-3-varuna.md": {
-    "file": "pages/post-3-varuna.md-cfef7866.js",
+    "file": "pages/post-3-varuna.md-d4cb1c5b.js",
     "src": "src/routes/post-3-varuna.md",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-bc8992d0.js",
-      "_post-container-d832e47f.js",
-      "_meta-bf8687f2.js",
+      "_index-001c6c62.js",
+      "_post-container-9ae78569.js",
+      "_meta-705228a4.js",
       "_workSwitch-bbe443d7.js",
-      "_post-container.svelte_svelte_type_style_lang-9baaa190.js",
+      "_post-container.svelte_svelte_type_style_lang-a2767ae0.js",
       "_singletons-d1fb5791.js"
     ],
     "css": [
@@ -119,17 +121,17 @@
     ]
   },
   "src/routes/post-4-duet.md": {
-    "file": "pages/post-4-duet.md-89347097.js",
+    "file": "pages/post-4-duet.md-5eca6332.js",
     "src": "src/routes/post-4-duet.md",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-bc8992d0.js",
-      "_post-container-d832e47f.js",
-      "_meta-bf8687f2.js",
-      "_video-insert-fdcc853c.js",
+      "_index-001c6c62.js",
+      "_post-container-9ae78569.js",
+      "_meta-705228a4.js",
+      "_video-insert-70dbdab5.js",
       "_workSwitch-bbe443d7.js",
-      "_post-container.svelte_svelte_type_style_lang-9baaa190.js",
+      "_post-container.svelte_svelte_type_style_lang-a2767ae0.js",
       "_singletons-d1fb5791.js"
     ],
     "css": [
@@ -138,14 +140,14 @@
     ]
   },
   "src/routes/post-5-generative.md": {
-    "file": "pages/post-5-generative.md-65f1e9ba.js",
+    "file": "pages/post-5-generative.md-81a0285e.js",
     "src": "src/routes/post-5-generative.md",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-bc8992d0.js",
-      "_post-container-d832e47f.js",
-      "_post-container.svelte_svelte_type_style_lang-9baaa190.js",
+      "_index-001c6c62.js",
+      "_post-container-9ae78569.js",
+      "_post-container.svelte_svelte_type_style_lang-a2767ae0.js",
       "_singletons-d1fb5791.js",
       "_workSwitch-bbe443d7.js"
     ],
@@ -154,16 +156,16 @@
     ]
   },
   "src/routes/post-6-this-site.md": {
-    "file": "pages/post-6-this-site.md-9b0428e8.js",
+    "file": "pages/post-6-this-site.md-5971e6c5.js",
     "src": "src/routes/post-6-this-site.md",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-bc8992d0.js",
-      "_post-container-d832e47f.js",
-      "_meta-bf8687f2.js",
+      "_index-001c6c62.js",
+      "_post-container-9ae78569.js",
+      "_meta-705228a4.js",
       "_workSwitch-bbe443d7.js",
-      "_post-container.svelte_svelte_type_style_lang-9baaa190.js",
+      "_post-container.svelte_svelte_type_style_lang-a2767ae0.js",
       "_singletons-d1fb5791.js"
     ],
     "css": [
@@ -171,20 +173,38 @@
       "assets/video-insert.svelte_svelte_type_style_lang-8a9cebea.css"
     ]
   },
+  "src/routes/post-7-universal.md": {
+    "file": "pages/post-7-universal.md-3105466e.js",
+    "src": "src/routes/post-7-universal.md",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-001c6c62.js",
+      "_post-container-9ae78569.js",
+      "_meta-705228a4.js",
+      "_workSwitch-bbe443d7.js",
+      "_post-container.svelte_svelte_type_style_lang-a2767ae0.js",
+      "_singletons-d1fb5791.js"
+    ],
+    "css": [
+      "assets/pages/post-7-universal.md-e8c74d3a.css",
+      "assets/video-insert.svelte_svelte_type_style_lang-8a9cebea.css"
+    ]
+  },
   "src/routes/work/index.svelte": {
-    "file": "pages/work/index.svelte-31e35e52.js",
+    "file": "pages/work/index.svelte-ed1fcb2d.js",
     "src": "src/routes/work/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-bc8992d0.js"
+      "_index-001c6c62.js"
     ],
     "css": [
       "assets/pages/work/index.svelte-f3abe544.css"
     ]
   },
-  "_index-bc8992d0.js": {
-    "file": "chunks/index-bc8992d0.js"
+  "_index-001c6c62.js": {
+    "file": "chunks/index-001c6c62.js"
   },
   "_singletons-d1fb5791.js": {
     "file": "chunks/singletons-d1fb5791.js"
@@ -192,11 +212,11 @@
   "_preload-helper-e4860ae8.js": {
     "file": "chunks/preload-helper-e4860ae8.js"
   },
-  "_post-container.svelte_svelte_type_style_lang-9baaa190.js": {
-    "file": "chunks/post-container.svelte_svelte_type_style_lang-9baaa190.js",
+  "_post-container.svelte_svelte_type_style_lang-a2767ae0.js": {
+    "file": "chunks/post-container.svelte_svelte_type_style_lang-a2767ae0.js",
     "imports": [
       "_singletons-d1fb5791.js",
-      "_index-bc8992d0.js"
+      "_index-001c6c62.js"
     ],
     "css": [
       "assets/post-container.svelte_svelte_type_style_lang-4393e908.css"
@@ -205,24 +225,24 @@
   "_workSwitch-bbe443d7.js": {
     "file": "chunks/workSwitch-bbe443d7.js"
   },
-  "_post-container-d832e47f.js": {
-    "file": "chunks/post-container-d832e47f.js",
+  "_post-container-9ae78569.js": {
+    "file": "chunks/post-container-9ae78569.js",
     "imports": [
-      "_index-bc8992d0.js",
-      "_post-container.svelte_svelte_type_style_lang-9baaa190.js",
+      "_index-001c6c62.js",
+      "_post-container.svelte_svelte_type_style_lang-a2767ae0.js",
       "_workSwitch-bbe443d7.js"
     ]
   },
-  "_meta-bf8687f2.js": {
-    "file": "chunks/meta-bf8687f2.js",
+  "_meta-705228a4.js": {
+    "file": "chunks/meta-705228a4.js",
     "imports": [
-      "_index-bc8992d0.js"
+      "_index-001c6c62.js"
     ]
   },
-  "_video-insert-fdcc853c.js": {
-    "file": "chunks/video-insert-fdcc853c.js",
+  "_video-insert-70dbdab5.js": {
+    "file": "chunks/video-insert-70dbdab5.js",
     "imports": [
-      "_index-bc8992d0.js"
+      "_index-001c6c62.js"
     ],
     "css": [
       "assets/video-insert.svelte_svelte_type_style_lang-8a9cebea.css"

@@ -1,0 +1,3 @@
+import{c as o}from"./singletons-d1fb5791.js";import{X as v,Y as f}from"./index-001c6c62.js";o.disable_scroll_handling;const C=o.goto;o.invalidate;o.prefetch;o.prefetch_routes;o.before_navigate;o.after_navigate;function b(e){const t=e-1;return t*t*t+1}function S(e,{delay:t=0,duration:n=400,easing:s=v}={}){const a=+getComputedStyle(e).opacity;return{delay:t,duration:n,easing:s,css:r=>`opacity: ${r*a}`}}function U(e,{delay:t=0,duration:n=400,easing:s=b,x:a=0,y:r=0,opacity:p=0}={}){const c=getComputedStyle(e),i=+c.opacity,u=c.transform==="none"?"":c.transform,y=i*(1-p),[_,g]=f(a),[m,d]=f(r);return{delay:t,duration:n,easing:s,css:(l,$)=>`
+			transform: ${u} translate(${(1-l)*_}${g}, ${(1-l)*m}${d});
+			opacity: ${i-y*$}`}}export{S as a,U as f,C as g};
