@@ -67,7 +67,7 @@
 			out:fade={{ duration: 150 }}
 			class="sizing fixed absolute"
 		>
-			<a sveltekit:prefetch target="_blank" href="http://sketches2020.compform.net/users/fY4guEMRJi3SpJHrM">
+			<a sveltekit:prefetch href={`/${posts[6].path.replace('.md', '')}`}>
 				<img
 					class="p-five saturate"
 					src={`${posts[4].metadata.thumbnail}`}
