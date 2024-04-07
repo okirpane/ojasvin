@@ -1,6 +1,6 @@
 ---
 title: UNIVERSAL PORTAL
-thumbnail: /assets/sticker-gen.svg
+thumbnail: /assets/sticker-portal.svg
 ---
 
 <script>

@@ -6119,7 +6119,7 @@ var init_post_7_universal_md = __esm({
     };
     metadata7 = {
       "title": "UNIVERSAL PORTAL",
-      "thumbnail": "/assets/sticker-gen.svg"
+      "thumbnail": "/assets/sticker-portal.svg"
     };
     ({ title: title7, thumbnail: thumbnail7 } = metadata7);
     Post_7_universal = create_ssr_component(($$result, $$props, $$bindings, slots) => {
@@ -6227,12 +6227,11 @@ var init_layout_svelte = __esm({
         $$bindings.posts(posts);
       $$result.css.add(css$3);
       $$unsubscribe_workSwitch();
-      return `${$workSwitch === "on" ? `
-	<div id="work-container" class="svelte-1ki12fb"><div class="sizing absolute"><a sveltekit:prefetch${add_attribute("href", `/${posts[0].path.replace(".md", "")}`, 0)}><img class="p-one saturate svelte-1ki12fb"${add_attribute("src", `${posts[0].metadata.thumbnail}`, 0)}${add_attribute("alt", posts[0].metadata.title, 0)}></a></div>
+      return `${$workSwitch === "on" ? `<div id="work-container" class="svelte-1ki12fb"><div class="sizing absolute"><a sveltekit:prefetch${add_attribute("href", `/${posts[0].path.replace(".md", "")}`, 0)}><img class="p-one saturate svelte-1ki12fb"${add_attribute("src", `${posts[0].metadata.thumbnail}`, 0)}${add_attribute("alt", posts[0].metadata.title, 0)}></a></div>
 		<div class="sizing absolute"><a sveltekit:prefetch${add_attribute("href", `/${posts[1].path.replace(".md", "")}`, 0)}><img class="p-two saturate svelte-1ki12fb"${add_attribute("src", `${posts[1].metadata.thumbnail}`, 0)}${add_attribute("alt", posts[1].metadata.title, 0)}></a></div>
 		<div class="sizing absolute"><a sveltekit:prefetch${add_attribute("href", `/${posts[2].path.replace(".md", "")}`, 0)}><img class="p-three saturate svelte-1ki12fb"${add_attribute("src", `${posts[2].metadata.thumbnail}`, 0)}${add_attribute("alt", posts[2].metadata.title, 0)}></a></div>
-		<div class="sizing absolute"><a sveltekit:prefetch${add_attribute("href", `/${posts[3].path.replace(".md", "")}`, 0)}><img class="p-four saturate svelte-1ki12fb"${add_attribute("src", `${posts[3].metadata.thumbnail}`, 0)}${add_attribute("alt", posts[3].metadata.title, 0)}></a></div>
-		<div class="sizing fixed absolute"><a sveltekit:prefetch${add_attribute("href", `/${posts[6].path.replace(".md", "")}`, 0)}><img class="p-five saturate svelte-1ki12fb"${add_attribute("src", `${posts[4].metadata.thumbnail}`, 0)}${add_attribute("alt", posts[4].metadata.title, 0)}></a></div>
+		<div class="sizing absolute"><a sveltekit:prefetch${add_attribute("href", `/${posts[6].path.replace(".md", "")}`, 0)}><img class="p-four saturate svelte-1ki12fb"${add_attribute("src", `${posts[6].metadata.thumbnail}`, 0)}${add_attribute("alt", posts[6].metadata.title, 0)}></a></div>
+		<div class="sizing fixed absolute"><a sveltekit:prefetch href="https://sketches2020.compform.net/users/fY4guEMRJi3SpJHrM"><img class="p-five saturate svelte-1ki12fb"${add_attribute("src", `${posts[4].metadata.thumbnail}`, 0)}${add_attribute("alt", posts[4].metadata.title, 0)}></a></div>
 		<div class="sizing fixed absolute"><a sveltekit:prefetch${add_attribute("href", `/${posts[5].path.replace(".md", "")}`, 0)}><img class="p-six saturate svelte-1ki12fb"${add_attribute("src", `${posts[5].metadata.thumbnail}`, 0)}${add_attribute("alt", posts[5].metadata.title, 0)}></a></div></div>` : `${$workSwitch === "off" ? `<div></div>` : ``}`}`;
     });
     css$2 = {
@@ -6309,8 +6308,8 @@ var entry, js, css11;
 var init__ = __esm({
   ".svelte-kit/output/server/nodes/0.js"() {
     init_layout_svelte();
-    entry = "pages/__layout.svelte-186cd6a9.js";
-    js = ["pages/__layout.svelte-186cd6a9.js", "chunks/preload-helper-e4860ae8.js", "chunks/index-001c6c62.js", "chunks/workSwitch-bbe443d7.js", "chunks/post-container.svelte_svelte_type_style_lang-a2767ae0.js", "chunks/singletons-d1fb5791.js"];
+    entry = "pages/__layout.svelte-9f388c1b.js";
+    js = ["pages/__layout.svelte-9f388c1b.js", "chunks/preload-helper-e4860ae8.js", "chunks/index-001c6c62.js", "chunks/workSwitch-bbe443d7.js", "chunks/post-container.svelte_svelte_type_style_lang-a2767ae0.js", "chunks/singletons-d1fb5791.js"];
     css11 = ["assets/pages/__layout.svelte-6dcda16b.css", "assets/post-container.svelte_svelte_type_style_lang-4393e908.css"];
   }
 });
@@ -6519,8 +6518,8 @@ var entry10, js10, css20;
 var init__10 = __esm({
   ".svelte-kit/output/server/nodes/9.js"() {
     init_post_7_universal_md();
-    entry10 = "pages/post-7-universal.md-3105466e.js";
-    js10 = ["pages/post-7-universal.md-3105466e.js", "chunks/index-001c6c62.js", "chunks/post-container-9ae78569.js", "chunks/post-container.svelte_svelte_type_style_lang-a2767ae0.js", "chunks/singletons-d1fb5791.js", "chunks/workSwitch-bbe443d7.js", "chunks/meta-705228a4.js"];
+    entry10 = "pages/post-7-universal.md-e7079f96.js";
+    js10 = ["pages/post-7-universal.md-e7079f96.js", "chunks/index-001c6c62.js", "chunks/post-container-9ae78569.js", "chunks/post-container.svelte_svelte_type_style_lang-a2767ae0.js", "chunks/singletons-d1fb5791.js", "chunks/workSwitch-bbe443d7.js", "chunks/meta-705228a4.js"];
     css20 = ["assets/pages/post-7-universal.md-e8c74d3a.css", "assets/video-insert.svelte_svelte_type_style_lang-8a9cebea.css", "assets/post-container.svelte_svelte_type_style_lang-4393e908.css"];
   }
 });
@@ -8655,10 +8654,10 @@ var Server = class {
 // .svelte-kit/vercel-tmp/manifest.js
 var manifest = {
   appDir: "_app",
-  assets: /* @__PURE__ */ new Set([".DS_Store", "assets/.DS_Store", "assets/OJ_FAVI.ico", "assets/OjasvinKirpane-Resume-Site.pdf", "assets/avatar-ojas-calli.svg", "assets/avatar-ojas-small.svg", "assets/close.svg", "assets/email.svg", "assets/post-1-image-banner.webp", "assets/post-1-image-card.webp", "assets/post-1-image-cta.webp", "assets/post-1-image-everything.webp", "assets/post-1-image-features.webp", "assets/post-1-image-flow.png", "assets/post-1-image-flow.webp", "assets/post-1-image-interface-1.webp", "assets/post-1-image-interface-2.webp", "assets/post-1-image-interface-3.webp", "assets/post-1-image-pitch-2.webp", "assets/post-1-image-pitch-3.webp", "assets/post-1-image-pitch.webp", "assets/post-1-image-team.webp", "assets/post-1-video-iterations.gif", "assets/post-1-video-onboarding.gif", "assets/post-1-video-style.gif", "assets/post-2-image-banner.webp", "assets/post-2-image-process.webp", "assets/post-2-image-product.webp", "assets/post-2-image-prog.webp", "assets/post-2-image-talent.webp", "assets/post-2-video-proto-1.mp4", "assets/post-2-video-proto-2-1.mp4", "assets/post-2-video-proto-2-2.mp4", "assets/post-2-video-proto-3-1.mp4", "assets/post-2-video-proto-3-2.mp4", "assets/post-3-image-banner.webp", "assets/post-3-image-calendar.webp", "assets/post-3-image-card-1.webp", "assets/post-3-image-card-2.webp", "assets/post-3-image-card-3.webp", "assets/post-3-image-process.webp", "assets/post-3-image-product.webp", "assets/post-3-image-sketch.webp", "assets/post-4-image-banner.webp", "assets/post-4-image-beauty.webp", "assets/post-4-image-dude.webp", "assets/post-4-image-example.webp", "assets/post-4-image-girl.webp", "assets/post-4-image-interface.webp", "assets/post-4-video-final.mp4", "assets/post-4-video-proto-1.mp4", "assets/post-4-video-proto-2.mp4", "assets/post-4-video-proto-3.mp4", "assets/post-6-image-iterations.webp", "assets/post-6-video-iterations.gif", "assets/post-7-gif/.DS_Store", "assets/post-7-gif/Frame 30.png", "assets/post-7-gif/Frame 31.png", "assets/post-7-gif/Frame 32.png", "assets/post-7-gif/Frame 33.png", "assets/post-7-gif/Frame 34.png", "assets/post-7-gif/Frame 35.png", "assets/post-7-gif/post-7-video-first.gif", "assets/post-7-image-ds-buttons.png", "assets/post-7-image-ds-colors.png", "assets/post-7-image-ds-components.png", "assets/post-7-image-flow-1.png", "assets/post-7-image-flow-2.png", "assets/post-7-image-product.png", "assets/post-7-video-first.gif", "assets/post-7-video-lego.gif", "assets/screen-banner.jpg", "assets/site-banner.webp", "assets/sticker-bulbul.svg", "assets/sticker-duet.svg", "assets/sticker-feather.svg", "assets/sticker-gen.svg", "assets/sticker-timer.svg", "assets/sticker-varuna.svg", "favicon.png", "fonts/Bonkers.woff2", "fonts/plexBold.woff2", "fonts/plexLight.woff2", "fonts/plexRegular.woff2"]),
+  assets: /* @__PURE__ */ new Set([".DS_Store", "assets/.DS_Store", "assets/OJ_FAVI.ico", "assets/OjasvinKirpane-Resume-Site.pdf", "assets/avatar-ojas-calli.svg", "assets/avatar-ojas-small.svg", "assets/close.svg", "assets/email.svg", "assets/post-1-image-banner.webp", "assets/post-1-image-card.webp", "assets/post-1-image-cta.webp", "assets/post-1-image-everything.webp", "assets/post-1-image-features.webp", "assets/post-1-image-flow.png", "assets/post-1-image-flow.webp", "assets/post-1-image-interface-1.webp", "assets/post-1-image-interface-2.webp", "assets/post-1-image-interface-3.webp", "assets/post-1-image-pitch-2.webp", "assets/post-1-image-pitch-3.webp", "assets/post-1-image-pitch.webp", "assets/post-1-image-team.webp", "assets/post-1-video-iterations.gif", "assets/post-1-video-onboarding.gif", "assets/post-1-video-style.gif", "assets/post-2-image-banner.webp", "assets/post-2-image-process.webp", "assets/post-2-image-product.webp", "assets/post-2-image-prog.webp", "assets/post-2-image-talent.webp", "assets/post-2-video-proto-1.mp4", "assets/post-2-video-proto-2-1.mp4", "assets/post-2-video-proto-2-2.mp4", "assets/post-2-video-proto-3-1.mp4", "assets/post-2-video-proto-3-2.mp4", "assets/post-3-image-banner.webp", "assets/post-3-image-calendar.webp", "assets/post-3-image-card-1.webp", "assets/post-3-image-card-2.webp", "assets/post-3-image-card-3.webp", "assets/post-3-image-process.webp", "assets/post-3-image-product.webp", "assets/post-3-image-sketch.webp", "assets/post-4-image-banner.webp", "assets/post-4-image-beauty.webp", "assets/post-4-image-dude.webp", "assets/post-4-image-example.webp", "assets/post-4-image-girl.webp", "assets/post-4-image-interface.webp", "assets/post-4-video-final.mp4", "assets/post-4-video-proto-1.mp4", "assets/post-4-video-proto-2.mp4", "assets/post-4-video-proto-3.mp4", "assets/post-6-image-iterations.webp", "assets/post-6-video-iterations.gif", "assets/post-7-gif/Frame 30.png", "assets/post-7-gif/Frame 31.png", "assets/post-7-gif/Frame 32.png", "assets/post-7-gif/Frame 33.png", "assets/post-7-gif/Frame 34.png", "assets/post-7-gif/Frame 35.png", "assets/post-7-gif/post-7-video-first.gif", "assets/post-7-image-ds-buttons.png", "assets/post-7-image-ds-colors.png", "assets/post-7-image-ds-components.png", "assets/post-7-image-flow-1.png", "assets/post-7-image-flow-2.png", "assets/post-7-image-product.png", "assets/post-7-video-first.gif", "assets/post-7-video-lego.gif", "assets/screen-banner.jpg", "assets/site-banner.webp", "assets/sticker-bulbul.svg", "assets/sticker-feather.svg", "assets/sticker-gen.svg", "assets/sticker-portal.svg", "assets/sticker-portal.svg~", "assets/sticker-timer.svg", "assets/sticker-varuna.svg", "favicon.png", "fonts/Bonkers.woff2", "fonts/plexBold.woff2", "fonts/plexLight.woff2", "fonts/plexRegular.woff2"]),
   mimeTypes: { ".ico": "image/vnd.microsoft.icon", ".pdf": "application/pdf", ".svg": "image/svg+xml", ".webp": "image/webp", ".png": "image/png", ".gif": "image/gif", ".mp4": "video/mp4", ".jpg": "image/jpeg", ".woff2": "font/woff2" },
   _: {
-    entry: { "file": "start-3a2a53d3.js", "js": ["start-3a2a53d3.js", "chunks/index-001c6c62.js", "chunks/preload-helper-e4860ae8.js", "chunks/singletons-d1fb5791.js"], "css": [] },
+    entry: { "file": "start-3a73eb6b.js", "js": ["start-3a73eb6b.js", "chunks/index-001c6c62.js", "chunks/preload-helper-e4860ae8.js", "chunks/singletons-d1fb5791.js"], "css": [] },
     nodes: [
       () => Promise.resolve().then(() => (init__(), __exports)),
       () => Promise.resolve().then(() => (init__2(), __exports2)),

@@ -5,14 +5,6 @@
 </script>
 
 {#if $workSwitch === 'on'}
-	<!-- <div id="work-container">
-		<div id="background" />
-		{#each posts as { path, metadata: { title, thumbnail } }}
-			<a sveltekit:prefetch href={`/${path.replace('.md', '')}`}>
-				<img src={`${thumbnail}`} alt={title} />
-			</a>
-		{/each}
-	</div> -->
 	<div id="work-container">
 		<div in:fly={{ x: -30, duration: 300 }} out:fade={{ duration: 150 }} class="sizing absolute">
 			<a sveltekit:prefetch href={`/${posts[0].path.replace('.md', '')}`}>
@@ -54,11 +46,11 @@
 			out:fade={{ duration: 150 }}
 			class="sizing absolute"
 		>
-			<a sveltekit:prefetch href={`/${posts[3].path.replace('.md', '')}`}>
+			<a sveltekit:prefetch href={`/${posts[6].path.replace('.md', '')}`}>
 				<img
 					class="p-four saturate"
-					src={`${posts[3].metadata.thumbnail}`}
-					alt={posts[3].metadata.title}
+					src={`${posts[6].metadata.thumbnail}`}
+					alt={posts[6].metadata.title}
 				/>
 			</a>
 		</div>
@@ -67,7 +59,7 @@
 			out:fade={{ duration: 150 }}
 			class="sizing fixed absolute"
 		>
-			<a sveltekit:prefetch href={`/${posts[6].path.replace('.md', '')}`}>
+			<a sveltekit:prefetch href="https://sketches2020.compform.net/users/fY4guEMRJi3SpJHrM">
 				<img
 					class="p-five saturate"
 					src={`${posts[4].metadata.thumbnail}`}
